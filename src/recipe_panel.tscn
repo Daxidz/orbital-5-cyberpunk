@@ -9,26 +9,29 @@
 [node name="RecipePanel" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(309, 66)
-scale = Vector2(4.79688, 1)
+scale = Vector2(2.03906, 0.640625)
 texture = ExtResource("1_wxxja")
+centered = false
 
 [node name="RecipeIcon" type="Sprite2D" parent="Background"]
-position = Vector2(-44.6368, 0)
+position = Vector2(21.7898, 63.5549)
 scale = Vector2(0.157796, 1)
 texture = ExtResource("2_ulxyl")
 
 [node name="Ingredient1" type="Sprite2D" parent="Background"]
-position = Vector2(-18.1368, -3.99999)
+visible = false
+position = Vector2(48.2898, 59.5549)
 scale = Vector2(0.166449, 0.477901)
 texture = ExtResource("3_8mwrm")
 
 [node name="Ingredient2" type="Sprite2D" parent="Background"]
-position = Vector2(6.25409, -1.99998)
+visible = false
+position = Vector2(72.6806, 61.5549)
 scale = Vector2(0.110304, 0.483503)
 texture = ExtResource("4_28l5s")
 
 [node name="Ingredient3" type="Sprite2D" parent="Background"]
-position = Vector2(36.2736, -1.99998)
+visible = false
+position = Vector2(102.7, 61.5549)
 scale = Vector2(0.132239, 0.540201)
 texture = ExtResource("5_uddyp")
