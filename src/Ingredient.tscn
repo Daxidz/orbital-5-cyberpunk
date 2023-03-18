@@ -10,6 +10,8 @@ radius = 55.1453
 size = Vector2(142, 175)
 
 [node name="IngrTest" type="RigidBody2D" groups=["ingr"]]
+mass = 0.01
+freeze_mode = 1
 script = ExtResource("1_6x1gi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

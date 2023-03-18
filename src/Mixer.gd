@@ -15,6 +15,9 @@ func _on_mix_area_body_exited(body):
 
 func mix():
 	var ingredients_names = []
+	
+	if bodies_in_mixer.size() == 0:
+		return
 	for b in bodies_in_mixer:
 		ingredients_names.push_back(b.ingr_name)
 	emit_signal("mixed", ingredients_names)

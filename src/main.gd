@@ -4,7 +4,6 @@ extends Node2D
 
 func _ready():
 	$Mixer.connect("mixed", _on_mixed)
-	pass
 
 func _input(event):
 	
