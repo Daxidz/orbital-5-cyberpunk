@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxlbc6wto7a57"]
+
+[ext_resource type="Script" path="res://src/Mixer.gd" id="1_ph3tc"]
+[ext_resource type="Texture2D" uid="uid://bgcp0esr0akll" path="res://res/img/mixer.png" id="2_phmpb"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_xvotu"]
+a = Vector2(-15, -135)
+b = Vector2(22, 130)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_3jchw"]
+a = Vector2(-137, -7)
+b = Vector2(133, 1)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_xqpwp"]
+a = Vector2(35, -124)
+b = Vector2(-49, 127)
+
+[node name="Mixer" type="Node2D"]
+script = ExtResource("1_ph3tc")
+
+[node name="MixerSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(494, 802)
+scale = Vector2(4, 4)
+texture = ExtResource("2_phmpb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="RigidBody2D" type="StaticBody2D" parent="."]
+
+[node name="BordG" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(316, 802)
+shape = SubResource("SegmentShape2D_xvotu")
+
+[node name="Fond" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(473, 929)
+shape = SubResource("SegmentShape2D_3jchw")
+
+[node name="BordDroite" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(653, 802)
+shape = SubResource("SegmentShape2D_xqpwp")
+
+[node name="MixArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MixArea"]
+polygon = PackedVector2Array(339, 925, 604, 929, 689, 675, 297, 667)
+
+[connection signal="body_entered" from="MixArea" to="." method="_on_mix_area_body_entered"]
+[connection signal="body_exited" from="MixArea" to="." method="_on_mix_area_body_exited"]

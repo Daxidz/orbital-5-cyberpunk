@@ -1,19 +1,122 @@
-[gd_scene format=3 uid="uid://c6men4m4xx1q"]
+[gd_scene load_steps=13 format=3 uid="uid://c6men4m4xx1q"]
+
+[ext_resource type="Script" path="res://src/main.gd" id="1_4hrhh"]
+[ext_resource type="Texture2D" uid="uid://yxrqdgfwt4x" path="res://res/img/mockup_dax.png" id="1_katgu"]
+[ext_resource type="PackedScene" uid="uid://dxlbc6wto7a57" path="res://src/mixer.tscn" id="3_h1sid"]
+[ext_resource type="PackedScene" uid="uid://ddyksiuwwuwih" path="res://src/ingr_test.tscn" id="5_hq05h"]
+[ext_resource type="Script" path="res://src/TapisIngredients.gd" id="5_s7wll"]
+[ext_resource type="Texture2D" uid="uid://4ip7w0yjoc65" path="res://res/img/tapis.png" id="6_bgw1u"]
+
+[sub_resource type="AudioStream" id="AudioStream_v25gu"]
+
+[sub_resource type="Theme" id="Theme_gnvgx"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_jqgvs"]
+a = Vector2(-1, 1085)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_xon6i"]
+a = Vector2(-1, 1080)
+b = Vector2(1921, 1080)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ptw77"]
+a = Vector2(1923, 1083)
+b = Vector2(1918, -7)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_a81mj"]
+a = Vector2(1923, 1)
+b = Vector2(-3, 0)
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_4hrhh")
 
 [node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(963, 540)
+scale = Vector2(4, 4)
+texture = ExtResource("1_katgu")
 
-[node name="Mixer" type="Node2D" parent="."]
-
-[node name="MixerSprite" type="Sprite2D" parent="Mixer"]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Mixer"]
+[node name="Mixer" parent="." instance=ExtResource("3_h1sid")]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStream_v25gu")
 
 [node name="IATextboxes" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="IATextManager" type="Node" parent="IATextboxes"]
+
+[node name="Label" type="Label" parent="IATextboxes"]
+offset_left = 282.0
+offset_top = 171.0
+offset_right = 755.0
+offset_bottom = 570.0
+theme = SubResource("Theme_gnvgx")
+theme_override_font_sizes/font_size = 60
+text = "Faster, rat"
+
+[node name="TextEdit" type="TextEdit" parent="IATextboxes"]
+offset_right = 884.0
+offset_bottom = 217.0
+theme_override_font_sizes/font_size = 70
+text = "ccdcdfcdfvfvfdfvdvfdvdf
+"
+editable = false
+wrap_mode = 1
 
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Recettes" type="CanvasLayer" parent="UI"]
+
+[node name="IngrTest" parent="." instance=ExtResource("5_hq05h")]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 790.0
+offset_top = 895.0
+offset_right = 1077.0
+offset_bottom = 1058.0
+theme_override_font_sizes/font_size = 70
+text = "MIX"
+
+[node name="WorldBoundaries" type="StaticBody2D" parent="."]
+
+[node name="SegLeft" type="CollisionShape2D" parent="WorldBoundaries"]
+shape = SubResource("SegmentShape2D_jqgvs")
+
+[node name="SegBot" type="CollisionShape2D" parent="WorldBoundaries"]
+shape = SubResource("SegmentShape2D_xon6i")
+
+[node name="SegRight" type="CollisionShape2D" parent="WorldBoundaries"]
+shape = SubResource("SegmentShape2D_ptw77")
+
+[node name="SegTop" type="CollisionShape2D" parent="WorldBoundaries"]
+shape = SubResource("SegmentShape2D_a81mj")
+
+[node name="TapisIngredients" type="Node2D" parent="."]
+script = ExtResource("5_s7wll")
+
+[node name="Timer" type="Timer" parent="TapisIngredients"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="TapisIngredients"]
+layer = 1
+scroll_offset = Vector2(9.504, 0)
+scroll_base_offset = Vector2(10, 0)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="TapisIngredients/ParallaxBackground"]
+texture_repeat = 2
+position = Vector2(505, 366)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="TapisIngredients/ParallaxBackground/ParallaxLayer"]
+texture_filter = 1
+texture_repeat = 2
+scale = Vector2(4, 4)
+texture = ExtResource("6_bgw1u")
+
+[node name="SpawnPosUp" type="Marker2D" parent="TapisIngredients"]
+position = Vector2(3, 263)
+
+[node name="SpawnPosDown" type="Marker2D" parent="TapisIngredients"]
+position = Vector2(3, 548)
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="TapisIngredients/Timer" to="TapisIngredients" method="_on_timer_timeout"]
