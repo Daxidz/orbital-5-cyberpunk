@@ -19,7 +19,17 @@ func mix():
 		ingredients_names.push_back(b.ingr_name)
 	emit_signal("mixed", ingredients_names)
 	
+	if !$Mix.is_playing():
+		$Mix.play()
+	
 	for b in bodies_in_mixer:
 		b.queue_free()
 		
 	bodies_in_mixer.clear()
+
+
+func _on_bord_body_entered(body):
+	if body.is_in_group("ingr"):
+		var pitch = randf_range(0.7, 1.4)
+		$Collision.pitch_scale = pitch
+		$Collision.play()

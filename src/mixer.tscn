@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxlbc6wto7a57"]
+[gd_scene load_steps=11 format=3 uid="uid://dlqyuil05a5mb"]
 
 [ext_resource type="Script" path="res://src/Mixer.gd" id="1_ph3tc"]
 [ext_resource type="Texture2D" uid="uid://bgcp0esr0akll" path="res://res/img/mixer.png" id="2_phmpb"]
+[ext_resource type="AudioStream" uid="uid://dncaw0cw8qng5" path="res://res/sounds/Electric Driller Spin 1.wav" id="3_e2jeo"]
+[ext_resource type="AudioStream" uid="uid://b3rkkgbeyedyv" path="res://res/sounds/collision_metal_soft_01.wav" id="4_q32lu"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_xvotu"]
 a = Vector2(-15, -135)
@@ -12,6 +14,18 @@ a = Vector2(-137, -7)
 b = Vector2(133, 1)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_xqpwp"]
+a = Vector2(35, -124)
+b = Vector2(-49, 127)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_4gypa"]
+a = Vector2(-15, -135)
+b = Vector2(22, 130)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_fqphy"]
+a = Vector2(-137, -7)
+b = Vector2(133, 1)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_5o8nl"]
 a = Vector2(35, -124)
 b = Vector2(-49, 127)
 
@@ -45,5 +59,27 @@ shape = SubResource("SegmentShape2D_xqpwp")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MixArea"]
 polygon = PackedVector2Array(339, 925, 604, 929, 689, 675, 297, 667)
 
+[node name="Mix" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_e2jeo")
+pitch_scale = 1.7
+
+[node name="Collision" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_q32lu")
+
+[node name="Bord" type="Area2D" parent="."]
+
+[node name="BordG" type="CollisionShape2D" parent="Bord"]
+position = Vector2(340, 779)
+shape = SubResource("SegmentShape2D_4gypa")
+
+[node name="Fond" type="CollisionShape2D" parent="Bord"]
+position = Vector2(492, 908)
+shape = SubResource("SegmentShape2D_fqphy")
+
+[node name="BordDr" type="CollisionShape2D" parent="Bord"]
+position = Vector2(630, 789)
+shape = SubResource("SegmentShape2D_5o8nl")
+
 [connection signal="body_entered" from="MixArea" to="." method="_on_mix_area_body_entered"]
 [connection signal="body_exited" from="MixArea" to="." method="_on_mix_area_body_exited"]
+[connection signal="body_entered" from="Bord" to="." method="_on_bord_body_entered"]

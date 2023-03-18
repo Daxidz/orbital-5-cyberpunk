@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dsckejq0vo2v7"
+path="res://.godot/imported/Saw Machine On 1_1.wav-5d04b43684f68bf8151ae6a110637ef2.sample"
+
+[deps]
+
+source_file="res://res/sounds/Saw Machine On 1_1.wav"
+dest_files=["res://.godot/imported/Saw Machine On 1_1.wav-5d04b43684f68bf8151ae6a110637ef2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

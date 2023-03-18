@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://bd76qo12vwiim"]
+
+[ext_resource type="Script" path="res://src/music_manager.gd" id="1_jc8yq"]
+[ext_resource type="AudioStream" uid="uid://nkvstnaak1uu" path="res://res/sounds/Kick_2.wav" id="2_nrubw"]
+[ext_resource type="AudioStream" uid="uid://jrr73xphr0ds" path="res://res/sounds/Smooth Hi-Hat_bip_2.wav" id="3_jukbr"]
+[ext_resource type="AudioStream" uid="uid://7odshj8wjmc1" path="res://res/sounds/Bass_2.wav" id="4_ai2jd"]
+[ext_resource type="AudioStream" uid="uid://be2owqst6lm73" path="res://res/sounds/Synth_2.wav" id="5_gffhy"]
+[ext_resource type="AudioStream" uid="uid://tqhfrete42ub" path="res://res/sounds/VoxSynth_2.wav" id="6_i6ldg"]
+
+[node name="MusicManager" type="Node2D"]
+script = ExtResource("1_jc8yq")
+
+[node name="Kick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_nrubw")
+autoplay = true
+bus = &"Kick"
+
+[node name="HH" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_jukbr")
+autoplay = true
+bus = &"HH"
+
+[node name="Bass" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ai2jd")
+autoplay = true
+bus = &"Bass"
+
+[node name="Synth" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_gffhy")
+autoplay = true
+
+[node name="SynthVox" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_i6ldg")
+autoplay = true
+bus = &"Synth"
