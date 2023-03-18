@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c6men4m4xx1q"]
+[gd_scene load_steps=14 format=3 uid="uid://c6men4m4xx1q"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_4hrhh"]
 [ext_resource type="Texture2D" uid="uid://yxrqdgfwt4x" path="res://res/img/mockup_dax.png" id="1_katgu"]
@@ -25,6 +25,71 @@ b = Vector2(1918, -7)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_a81mj"]
 a = Vector2(1923, 1)
 b = Vector2(-3, 0)
+
+[sub_resource type="GDScript" id="GDScript_6a73d"]
+script/source = "class_name RecipesManager extends Node
+
+@export var SPAWN_INTERVAL_MIN: float = 3
+@export var SPAWN_INTERVAL_MAX: float = 6
+
+@export var TIMER_INTERVAL: float = 0.5
+
+var RECIPES: Array = [
+	Recipe.new([\"Eau\", \"Get\"]),
+	Recipe.new([\"Vodka\", \"Rhum\"]),
+]
+var ongoing_recipes: Array
+
+var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+
+var next_spawn_tick: float = 0
+var timer_tick: float = 0
+
+# @onready var IngredientInstancier = preload(\"res://src/ingredient.tscn\")
+@onready var timer: Timer = $Timer
+
+func _ready():
+	timer.start(TIMER_INTERVAL)
+
+func generate_next_spawn():
+	self.next_spawn_tick = self.timer_tick + self.rng.randf_range(SPAWN_INTERVAL_MIN, SPAWN_INTERVAL_MAX)
+	print_debug(\"next_spawn_tick: %f\" % self.next_spawn_tick)
+
+func spawn_new_recipe():
+	var recipe: Recipe = RECIPES[self.rng.randi_range(0, RECIPES.size() - 1)]
+	self.ongoing_recipes.append(recipe)
+
+	print_debug(\"Added new recipe: %s\" % recipe)
+
+	self.generate_next_spawn()
+
+func _on_timer_timeout():
+	self.timer_tick += 1
+	if (self.timer_tick >= self.next_spawn_tick):
+		self.spawn_new_recipe()
+
+func is_ongoing_recipe_valid(ingredients: Array):
+	var same = self.ongoing_recipes.filter(func(recipe): return recipe.ingredients == ingredients)
+	print_debug(\"is_ongoing_recipe_valid() - same.size(): %d\" % same.size())
+
+
+class Recipe:
+	var ingredients: Array
+
+#	func equals(other: Recipe) -> bool:
+#		return self.ingredients == other.ingredients
+
+	func _init(ingredients: Array):
+		self.ingredients.append_array(ingredients)
+
+	func _to_string():
+		var result = \"[ \"
+		for ingredient in self.ingredients:
+			result += \"%s \" % ingredient
+		result += \"]\"
+
+		return result
+"
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_4hrhh")
@@ -117,6 +182,9 @@ position = Vector2(3, 263)
 
 [node name="SpawnPosDown" type="Marker2D" parent="TapisIngredients"]
 position = Vector2(3, 548)
+
+[node name="RecipesManager" type="Node" parent="."]
+script = SubResource("GDScript_6a73d")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="TapisIngredients/Timer" to="TapisIngredients" method="_on_timer_timeout"]
