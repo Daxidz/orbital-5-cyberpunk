@@ -5,6 +5,7 @@ extends Node2D
 func _ready():
 	AudioServer.set_bus_mute(1, true)
 	AudioServer.set_bus_mute(2, true)
+	AudioServer.set_bus_mute(3, true)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
