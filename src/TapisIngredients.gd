@@ -15,8 +15,8 @@ func _process(delta):
 
 func _on_timer_timeout():
 	var ingr = Ingredient.instantiate()
+	ingr.position.x = 0
 	ingr.position.y = randf_range($SpawnPosDown.position.y, $SpawnPosUp.position.y)
-	ingr.position.x = randf_range(200, 1700)
 	
 	get_parent().add_child(ingr)
 	spawn_interval -= spawn_interval/30
