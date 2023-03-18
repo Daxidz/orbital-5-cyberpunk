@@ -20,6 +20,3 @@ func _on_mixed(ingredients_mixed: Array):
 	print(ingredients_mixed)
 	
 	$RecipesManager.is_ongoing_recipe_valid(ingredients_mixed)
-	
-	
-	

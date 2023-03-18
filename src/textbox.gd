@@ -1,9 +1,9 @@
 extends Node2D
 
-var text: String = "fiurhidrfjéi"
+@export var text: String = "fiurhidrfjé ferf fer fer  erfeferferf ferferfer ergergf ei"
 
 @onready var label: Label = $Label
-@export var text_speed: float = 17
+@export var text_speed: float = 25
 
 var text_size: int
 
@@ -11,8 +11,12 @@ var text_size: int
 func _ready():
 	visible = false
 	label.text = text
-	$ColorRect.size = label.size
-	label.position = position + Vector2(40,20)
+#	await get_tree().create_timer(1).timeout
+	label.visible_ratio = 1.0
+	print(label.size)
+	print(label.text)
+	$ColorRect.size = label.size+ Vector2(40,20)
+#	label.position = position + Vector2(20,10)
 	label.visible_characters = 0
 	text_size =label.get_total_character_count()
 	visible = true
@@ -30,7 +34,7 @@ func _on_timer_timeout():
 
 func _on_destroy_timer_timeout():
 	var tween = create_tween()
-	tween.tween_property(self, "modulate", Color(1,1,1,0),0.2).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(self, "modulate", Color(1,1,1,0),0.2)
 	tween.finished.connect(_on_Tween_finished)
 	tween.play()
 	
