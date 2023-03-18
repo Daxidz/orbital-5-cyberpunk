@@ -4,24 +4,28 @@
 [ext_resource type="Texture2D" uid="uid://bwh2rg3puigin" path="res://res/img/ingredients/brocoli.svg" id="2_j00f5"]
 [ext_resource type="Texture2D" uid="uid://b1w028adrt44k" path="res://res/img/ingredients/essence.svg" id="3_bemjm"]
 
-[node name="Panel" type="ColorRect"]
-custom_minimum_size = Vector2(400, 100)
+[node name="MainContainer" type="ColorRect"]
+offset_right = 270.0
+offset_bottom = 80.0
 color = Color(0, 0, 0, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 2
-offset_top = -4.0
-offset_right = 40.0
-offset_bottom = -4.0
+offset_right = 125.0
+offset_bottom = 201.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 texture = ExtResource("1_gwq27")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -29,6 +33,7 @@ size_flags_horizontal = 3
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("2_j00f5")
+expand_mode = 1
 
 [node name="TextureRect2" type="TextureRect" parent="VBoxContainer/HBoxContainer/HBoxContainer"]
 layout_mode = 2

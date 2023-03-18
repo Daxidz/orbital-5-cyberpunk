@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://5unhdvcfbxs3"]
+
+[ext_resource type="Texture2D" uid="uid://b2wk70bgifw7o" path="res://icon.svg" id="1_wxxja"]
+[ext_resource type="Texture2D" uid="uid://bgcp0esr0akll" path="res://res/img/mixer.png" id="2_ulxyl"]
+[ext_resource type="Texture2D" uid="uid://c3ljnmxo4m6ux" path="res://res/img/ingredients/ampoule.svg" id="3_8mwrm"]
+[ext_resource type="Texture2D" uid="uid://dh72gdkithqyd" path="res://res/img/ingredients/boulon.svg" id="4_28l5s"]
+[ext_resource type="Texture2D" uid="uid://bwh2rg3puigin" path="res://res/img/ingredients/brocoli.svg" id="5_uddyp"]
+
+[node name="RecipePanel" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(309, 66)
+scale = Vector2(4.79688, 1)
+texture = ExtResource("1_wxxja")
+
+[node name="RecipeIcon" type="Sprite2D" parent="Background"]
+position = Vector2(-44.6368, 0)
+scale = Vector2(0.157796, 1)
+texture = ExtResource("2_ulxyl")
+
+[node name="Ingredient1" type="Sprite2D" parent="Background"]
+position = Vector2(-18.1368, -3.99999)
+scale = Vector2(0.166449, 0.477901)
+texture = ExtResource("3_8mwrm")
+
+[node name="Ingredient2" type="Sprite2D" parent="Background"]
+position = Vector2(6.25409, -1.99998)
+scale = Vector2(0.110304, 0.483503)
+texture = ExtResource("4_28l5s")
+
+[node name="Ingredient3" type="Sprite2D" parent="Background"]
+position = Vector2(36.2736, -1.99998)
+scale = Vector2(0.132239, 0.540201)
+texture = ExtResource("5_uddyp")
