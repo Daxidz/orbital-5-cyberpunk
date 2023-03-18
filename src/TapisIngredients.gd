@@ -1,7 +1,7 @@
 extends Node2D
 
 
-@onready var Ingredient = preload("res://src/ingr_test.tscn")
+@onready var Ingredient = preload("res://src/Ingredient.tscn")
 
 @export var spawn_interval_base: float = 2.0
 var spawn_interval: float = spawn_interval_base

@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var ingerdient = preload("res://src/ingr_test.tscn")
+@onready var ingerdient = preload("res://src/Ingredient.tscn")
 
 func _ready():
 	$Mixer.connect("mixed", _on_mixed)

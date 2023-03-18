@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsvnmr1cr31y2"]
+
+[ext_resource type="Script" path="res://src/recipes_manager.gd" id="1_jv8tx"]
+
+[node name="RecipesManager" type="Node"]
+script = ExtResource("1_jv8tx")
+
+[node name="Timer" type="Timer" parent="."]

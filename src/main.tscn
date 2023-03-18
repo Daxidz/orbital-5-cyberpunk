@@ -1,11 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://c6men4m4xx1q"]
+[gd_scene load_steps=14 format=3 uid="uid://bfyde53g6pla1"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_4hrhh"]
 [ext_resource type="Texture2D" uid="uid://yxrqdgfwt4x" path="res://res/img/mockup_dax.png" id="1_katgu"]
 [ext_resource type="PackedScene" uid="uid://dxlbc6wto7a57" path="res://src/mixer.tscn" id="3_h1sid"]
-[ext_resource type="PackedScene" uid="uid://ddyksiuwwuwih" path="res://src/ingr_test.tscn" id="5_hq05h"]
+[ext_resource type="PackedScene" uid="uid://ddyksiuwwuwih" path="res://src/Ingredient.tscn" id="5_hq05h"]
 [ext_resource type="Script" path="res://src/TapisIngredients.gd" id="5_s7wll"]
 [ext_resource type="Texture2D" uid="uid://4ip7w0yjoc65" path="res://res/img/tapis.png" id="6_bgw1u"]
+[ext_resource type="PackedScene" uid="uid://bsvnmr1cr31y2" path="res://src/recipes_manager.tscn" id="7_flfml"]
 
 [sub_resource type="AudioStream" id="AudioStream_v25gu"]
 
@@ -25,71 +26,6 @@ b = Vector2(1918, -7)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_a81mj"]
 a = Vector2(1923, 1)
 b = Vector2(-3, 0)
-
-[sub_resource type="GDScript" id="GDScript_6a73d"]
-script/source = "class_name RecipesManager extends Node
-
-@export var SPAWN_INTERVAL_MIN: float = 3
-@export var SPAWN_INTERVAL_MAX: float = 6
-
-@export var TIMER_INTERVAL: float = 0.5
-
-var RECIPES: Array = [
-	Recipe.new([\"Eau\", \"Get\"]),
-	Recipe.new([\"Vodka\", \"Rhum\"]),
-]
-var ongoing_recipes: Array
-
-var rng: RandomNumberGenerator = RandomNumberGenerator.new()
-
-var next_spawn_tick: float = 0
-var timer_tick: float = 0
-
-# @onready var IngredientInstancier = preload(\"res://src/ingredient.tscn\")
-@onready var timer: Timer = $Timer
-
-func _ready():
-	timer.start(TIMER_INTERVAL)
-
-func generate_next_spawn():
-	self.next_spawn_tick = self.timer_tick + self.rng.randf_range(SPAWN_INTERVAL_MIN, SPAWN_INTERVAL_MAX)
-	print_debug(\"next_spawn_tick: %f\" % self.next_spawn_tick)
-
-func spawn_new_recipe():
-	var recipe: Recipe = RECIPES[self.rng.randi_range(0, RECIPES.size() - 1)]
-	self.ongoing_recipes.append(recipe)
-
-	print_debug(\"Added new recipe: %s\" % recipe)
-
-	self.generate_next_spawn()
-
-func _on_timer_timeout():
-	self.timer_tick += 1
-	if (self.timer_tick >= self.next_spawn_tick):
-		self.spawn_new_recipe()
-
-func is_ongoing_recipe_valid(ingredients: Array):
-	var same = self.ongoing_recipes.filter(func(recipe): return recipe.ingredients == ingredients)
-	print_debug(\"is_ongoing_recipe_valid() - same.size(): %d\" % same.size())
-
-
-class Recipe:
-	var ingredients: Array
-
-#	func equals(other: Recipe) -> bool:
-#		return self.ingredients == other.ingredients
-
-	func _init(ingredients: Array):
-		self.ingredients.append_array(ingredients)
-
-	func _to_string():
-		var result = \"[ \"
-		for ingredient in self.ingredients:
-			result += \"%s \" % ingredient
-		result += \"]\"
-
-		return result
-"
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_4hrhh")
@@ -168,7 +104,7 @@ scroll_base_offset = Vector2(10, 0)
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="TapisIngredients/ParallaxBackground"]
 texture_repeat = 2
-position = Vector2(505, 366)
+position = Vector2(504, 402)
 motion_mirroring = Vector2(1920, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="TapisIngredients/ParallaxBackground/ParallaxLayer"]
@@ -183,8 +119,7 @@ position = Vector2(3, 263)
 [node name="SpawnPosDown" type="Marker2D" parent="TapisIngredients"]
 position = Vector2(3, 548)
 
-[node name="RecipesManager" type="Node" parent="."]
-script = SubResource("GDScript_6a73d")
+[node name="RecipesManager" parent="." instance=ExtResource("7_flfml")]
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="TapisIngredients/Timer" to="TapisIngredients" method="_on_timer_timeout"]
