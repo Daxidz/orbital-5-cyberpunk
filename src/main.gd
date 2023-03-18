@@ -17,11 +17,10 @@ func _on_button_pressed():
 	$Mixer.mix()
 	
 	
-func _on_mixed(ingerdients_mixed: Array):
-	print(ingerdients_mixed)
+func _on_mixed(ingredients_mixed: Array):
+	print(ingredients_mixed)
 	
-	if ingerdients_mixed.size() != 0:
-		for i in ingerdients_mixed:
-			i.queue_free()
+	$RecipesManager.is_ongoing_recipe_valid(ingredients_mixed)
+	
 	
 	

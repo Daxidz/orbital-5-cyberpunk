@@ -14,6 +14,12 @@ func _on_mix_area_body_exited(body):
 		bodies_in_mixer.erase(body)
 
 func mix():
-	emit_signal("mixed", bodies_in_mixer)
+	var ingredients_names = []
+	for b in bodies_in_mixer:
+		ingredients_names.push_back(b.ingr_name)
+	emit_signal("mixed", ingredients_names)
 	
+	for b in bodies_in_mixer:
+		b.queue_free()
+		
 	bodies_in_mixer.clear()

@@ -1,9 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://bfyde53g6pla1"]
+[gd_scene load_steps=13 format=3 uid="uid://bfyde53g6pla1"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_4hrhh"]
 [ext_resource type="Texture2D" uid="uid://yxrqdgfwt4x" path="res://res/img/mockup_dax.png" id="1_katgu"]
 [ext_resource type="PackedScene" uid="uid://dxlbc6wto7a57" path="res://src/mixer.tscn" id="3_h1sid"]
-[ext_resource type="PackedScene" uid="uid://ddyksiuwwuwih" path="res://src/Ingredient.tscn" id="5_hq05h"]
 [ext_resource type="Script" path="res://src/TapisIngredients.gd" id="5_s7wll"]
 [ext_resource type="Texture2D" uid="uid://4ip7w0yjoc65" path="res://res/img/tapis.png" id="6_bgw1u"]
 [ext_resource type="PackedScene" uid="uid://bsvnmr1cr31y2" path="res://src/recipes_manager.tscn" id="7_flfml"]
@@ -67,8 +66,6 @@ wrap_mode = 1
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Recettes" type="CanvasLayer" parent="UI"]
-
-[node name="IngrTest" parent="." instance=ExtResource("5_hq05h")]
 
 [node name="Button" type="Button" parent="."]
 offset_left = 790.0

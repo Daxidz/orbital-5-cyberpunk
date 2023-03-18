@@ -6,8 +6,8 @@ class_name RecipesManager extends Node
 @export var TIMER_INTERVAL: float = 0.5
 
 var RECIPES: Array = [
-	Recipe.new(["Eau", "Get"]),
-	Recipe.new(["Vodka", "Rhum"]),
+	Recipe.new(["essence", "pile"]),
+	Recipe.new(["boulon", "brocoli"]),
 ]
 var ongoing_recipes: Array
 
@@ -16,10 +16,10 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var next_spawn_tick: float = 0
 var timer_tick: float = 0
 
-# @onready var IngredientInstancier = preload("res://src/ingredient.tscn")
 @onready var timer: Timer = $Timer
 
 func _ready():
+	ongoing_recipes = RECIPES
 	timer.start(TIMER_INTERVAL)
 
 func generate_next_spawn():
@@ -40,7 +40,10 @@ func _on_timer_timeout():
 		self.spawn_new_recipe()
 
 func is_ongoing_recipe_valid(ingredients: Array):
-	var same = self.ongoing_recipes.filter(func(recipe): return recipe.ingredients == ingredients)
+	var same = self.ongoing_recipes.filter(func(recipe):
+		recipe.ingredients.sort() 
+		ingredients.sort() 
+		return recipe.ingredients == ingredients)
 	print_debug("is_ongoing_recipe_valid() - same.size(): %d" % same.size())
 
 

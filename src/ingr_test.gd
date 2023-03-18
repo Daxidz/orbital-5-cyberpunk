@@ -5,11 +5,20 @@ var selected: bool = false
 var on_tapis: bool = true
 var speed: float = 200.0
 
+var ingr_name: String = ""
+
+func set_texture(texture_name):
+	var texture = load("res://res/img/ingredients/"+texture_name+".svg")
+	$Sprite2D.texture = texture
 
 func _ready():
+	$Label.text = ingr_name
 	set_physics_process(false)
 
 func _process(delta):
+	
+	if global_position.x > 1950:
+		queue_free()
 	
 	if on_tapis:
 		global_position.x += delta * speed
