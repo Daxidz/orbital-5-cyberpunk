@@ -14,8 +14,6 @@ func set_texture(texture_name):
 	$Sprite2D.texture = texture
 
 func _ready():
-	
-	$Label.text = ingr_name
 	freeze = true
 	set_physics_process(true)
 

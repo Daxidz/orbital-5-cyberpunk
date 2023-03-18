@@ -1,49 +1,49 @@
 [gd_scene load_steps=11 format=3 uid="uid://dlqyuil05a5mb"]
 
 [ext_resource type="Script" path="res://src/Mixer.gd" id="1_ph3tc"]
-[ext_resource type="Texture2D" uid="uid://bgcp0esr0akll" path="res://res/img/mixer.png" id="2_phmpb"]
+[ext_resource type="Texture2D" uid="uid://cefvkg4xdajk7" path="res://res/img/mixer/mixer__empty.png" id="2_ic77w"]
 [ext_resource type="AudioStream" uid="uid://dncaw0cw8qng5" path="res://res/sounds/Electric Driller Spin 1.wav" id="3_e2jeo"]
 [ext_resource type="AudioStream" uid="uid://b3rkkgbeyedyv" path="res://res/sounds/collision_metal_soft_01.wav" id="4_q32lu"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_xvotu"]
-a = Vector2(-15, -135)
+a = Vector2(-54, -257)
 b = Vector2(22, 130)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_3jchw"]
-a = Vector2(-137, -7)
-b = Vector2(133, 1)
+a = Vector2(-361, -509)
+b = Vector2(-211, -510)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_xqpwp"]
-a = Vector2(35, -124)
-b = Vector2(-49, 127)
+a = Vector2(-328, -772)
+b = Vector2(-391, -387)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_4gypa"]
-a = Vector2(-15, -135)
-b = Vector2(22, 130)
+a = Vector2(-300, -747)
+b = Vector2(-221, -360)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_fqphy"]
-a = Vector2(-137, -7)
-b = Vector2(133, 1)
+a = Vector2(-442, -516)
+b = Vector2(-299, -514)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_5o8nl"]
-a = Vector2(35, -124)
-b = Vector2(-49, 127)
+a = Vector2(-313, -763)
+b = Vector2(-372, -387)
 
 [node name="Mixer" type="Node2D"]
 script = ExtResource("1_ph3tc")
 
 [node name="MixerSprite" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(494, 802)
-scale = Vector2(4, 4)
-texture = ExtResource("2_phmpb")
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_ic77w")
+centered = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="RigidBody2D" type="StaticBody2D" parent="."]
 
 [node name="BordG" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(316, 802)
+position = Vector2(86, 292)
 shape = SubResource("SegmentShape2D_xvotu")
 
 [node name="Fond" type="CollisionShape2D" parent="RigidBody2D"]
@@ -57,7 +57,8 @@ shape = SubResource("SegmentShape2D_xqpwp")
 [node name="MixArea" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MixArea"]
-polygon = PackedVector2Array(339, 925, 604, 929, 689, 675, 297, 667)
+position = Vector2(-240, -519)
+polygon = PackedVector2Array(339, 925, 499, 919, 541, 615, 296, 617)
 
 [node name="Mix" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_e2jeo")
@@ -73,7 +74,7 @@ position = Vector2(340, 779)
 shape = SubResource("SegmentShape2D_4gypa")
 
 [node name="Fond" type="CollisionShape2D" parent="Bord"]
-position = Vector2(492, 908)
+position = Vector2(559, 929)
 shape = SubResource("SegmentShape2D_fqphy")
 
 [node name="BordDr" type="CollisionShape2D" parent="Bord"]

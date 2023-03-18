@@ -11,12 +11,8 @@ var text_size: int
 func _ready():
 	visible = false
 	label.text = text
-#	await get_tree().create_timer(1).timeout
 	label.visible_ratio = 1.0
-	print(label.size)
-	print(label.text)
 	$ColorRect.size = label.size+ Vector2(40,20)
-#	label.position = position + Vector2(20,10)
 	label.visible_characters = 0
 	text_size =label.get_total_character_count()
 	visible = true

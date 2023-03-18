@@ -5,13 +5,15 @@ var bodies_in_mixer = []
 signal mixed(ingerdients_mixed)
 
 func _on_mix_area_body_entered(body):
-	
 	if body.is_in_group("ingr"):
+		print(str(body) + " ENTER")
 		bodies_in_mixer.push_back(body)
 
 func _on_mix_area_body_exited(body):
-	if bodies_in_mixer.find(body):
-		bodies_in_mixer.erase(body)
+	if body.is_in_group("ingr"):
+		if bodies_in_mixer.find(body) != -1:
+			print(str(body) + " EXIT")
+			bodies_in_mixer.erase(body)
 
 func mix():
 	var ingredients_names = []

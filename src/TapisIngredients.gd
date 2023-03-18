@@ -1,5 +1,8 @@
 extends Node2D
 
+signal ingredient_threshold
+signal ingredient_spawned
+
 const NAMES = ["ampoule", "boulon", "brocoli", "essence", "pile"]
 
 @onready var Ingredient = preload("res://src/Ingredient.tscn")
@@ -12,6 +15,7 @@ var speed_current: float = speed_base
 
 var nb_ingredients_total: int = 0
 
+
 func _ready():
 	spawn_interval = spawn_interval_base
 	$Timer.start(spawn_interval)
@@ -20,8 +24,10 @@ func _process(delta):
 	$ParallaxBackground.scroll_offset.x += delta*50
 
 func spawn_ingredient():
+	emit_signal("ingredient_spawned")
 	if nb_ingredients_total % 10 == 0: 
-		speed_current = speed_current * 1.1
+#		speed_current = speed_current * 1.1
+		emit_signal("ingredient_threshold")
 	var ingr = Ingredient.instantiate()
 	ingr.position.x = $SpawnPosDown.position.x
 	ingr.position.y = randf_range($SpawnPosDown.position.y, $SpawnPosUp.position.y)
