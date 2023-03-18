@@ -3,12 +3,12 @@
 [ext_resource type="Script" path="res://src/main.gd" id="1_4hrhh"]
 [ext_resource type="Texture2D" uid="uid://dpjeaqibwc7kt" path="res://res/img/background.png" id="2_3o384"]
 [ext_resource type="PackedScene" uid="uid://dxlbc6wto7a57" path="res://src/mixer.tscn" id="3_h1sid"]
-[ext_resource type="PackedScene" uid="uid://ba5k6m3m483gu" path="res://src/recipe_pannel.tscn" id="4_kbdc0"]
 [ext_resource type="Script" path="res://src/TapisIngredients.gd" id="5_s7wll"]
 [ext_resource type="Texture2D" uid="uid://4ip7w0yjoc65" path="res://res/img/tapis.png" id="6_bgw1u"]
 [ext_resource type="PackedScene" uid="uid://bsvnmr1cr31y2" path="res://src/recipes_manager.tscn" id="7_flfml"]
 [ext_resource type="Texture2D" uid="uid://li7egooj1puj" path="res://res/img/tuyau.svg" id="8_wht4i"]
 [ext_resource type="Texture2D" uid="uid://b54ukeo1sasxe" path="res://res/img/ecran.svg" id="9_6wdqx"]
+[ext_resource type="PackedScene" uid="uid://5unhdvcfbxs3" path="res://src/recipe_panel.tscn" id="9_rft4q"]
 
 [sub_resource type="AudioStream" id="AudioStream_v25gu"]
 
@@ -81,21 +81,6 @@ theme_override_font_sizes/font_size = 40
 text = "cdscdsfc fdcs dcdsc  sd csdccc dfs dcdcsxsxsaasxasx xassxsxaxa sasx cxsdsdcdsc "
 autowrap_mode = 3
 
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="Recipes" type="CanvasLayer" parent="UI"]
-visible = false
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Recipes"]
-custom_minimum_size = Vector2(400, 300)
-offset_left = 1479.0
-offset_top = 573.0
-offset_right = 1879.0
-offset_bottom = 873.0
-
-[node name="Panel" parent="UI/Recipes/VBoxContainer" instance=ExtResource("4_kbdc0")]
-layout_mode = 2
-
 [node name="Button" type="Button" parent="."]
 offset_left = 790.0
 offset_top = 895.0
@@ -148,6 +133,9 @@ position = Vector2(237, 268)
 position = Vector2(237, 451)
 
 [node name="RecipesManager" parent="." instance=ExtResource("7_flfml")]
+SPAWN_INTERVAL_MIN = 3.0
+SPAWN_INTERVAL_MAX = 6.0
+TIMER_INTERVAL = 0.5
 
 [node name="Tuyau" type="Sprite2D" parent="."]
 position = Vector2(-66, 402)
@@ -157,6 +145,9 @@ texture = ExtResource("8_wht4i")
 position = Vector2(208, 849)
 scale = Vector2(-1, 1)
 texture = ExtResource("9_6wdqx")
+
+[node name="RecipePanel" parent="." instance=ExtResource("9_rft4q")]
+visible = false
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="TapisIngredients/Timer" to="TapisIngredients" method="_on_timer_timeout"]

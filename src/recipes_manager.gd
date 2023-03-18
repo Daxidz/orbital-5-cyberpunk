@@ -16,11 +16,24 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var next_spawn_tick: float = 0
 var timer_tick: float = 0
 
+var RecipePanelInstancier = preload("res://src/recipe_panel.tscn")
+
 @onready var timer: Timer = $Timer
 
 func _ready():
 	ongoing_recipes = RECIPES
 	timer.start(TIMER_INTERVAL)
+	
+	var recipe_panel1 = RecipePanelInstancier.instantiate()
+	var recipe_panel2 = RecipePanelInstancier.instantiate()
+	
+	# var recipes_list = get_tree().get_root().get_node("Main/UI/Recipes/RecipesVerticalList")
+	var screen = get_tree().get_root().get_node("Main/Ecran") as Sprite2D
+	print_debug("screen.position.x: %f, y: %f" % [screen.position.x, screen.position.y])
+
+#	if (screen != null):
+#		screen.add_child(recipe_panel1)
+#		screen.add_child(recipe_panel2)
 
 func generate_next_spawn():
 	self.next_spawn_tick = self.timer_tick + self.rng.randf_range(SPAWN_INTERVAL_MIN, SPAWN_INTERVAL_MAX)
