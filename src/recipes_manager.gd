@@ -40,21 +40,23 @@ func _on_timer_timeout():
 		self.spawn_new_recipe()
 
 func is_ongoing_recipe_valid(ingredients: Array):
-	var same = self.ongoing_recipes.filter(func(recipe):
-		recipe.ingredients.sort() 
-		ingredients.sort() 
-		return recipe.ingredients == ingredients)
-	print_debug("is_ongoing_recipe_valid() - same.size(): %d" % same.size())
+	ingredients.sort()
+	
+	var same = self.ongoing_recipes.filter(func(recipe): return recipe.ingredients == ingredients)
+	if (same.size() > 0):
+		for recipe in self.ongoing_recipes:
+			if (recipe.ingredients == ingredients):
+				self.ongoing_recipes.erase(recipe)
+	
+	return (same.size() > 0)
 
 
 class Recipe:
 	var ingredients: Array
 
-#	func equals(other: Recipe) -> bool:
-#		return self.ingredients == other.ingredients
-
 	func _init(ingredients: Array):
 		self.ingredients.append_array(ingredients)
+		self.ingredients.sort()
 
 	func _to_string():
 		var result = "[ "
