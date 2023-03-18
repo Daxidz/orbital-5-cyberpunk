@@ -1,8 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://bfyde53g6pla1"]
+[gd_scene load_steps=15 format=3 uid="uid://bfyde53g6pla1"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_4hrhh"]
 [ext_resource type="Texture2D" uid="uid://dpjeaqibwc7kt" path="res://res/img/background.png" id="2_3o384"]
-[ext_resource type="PackedScene" uid="uid://dxlbc6wto7a57" path="res://src/mixer.tscn" id="3_h1sid"]
+[ext_resource type="PackedScene" uid="uid://dlqyuil05a5mb" path="res://src/mixer.tscn" id="3_h1sid"]
 [ext_resource type="Script" path="res://src/TapisIngredients.gd" id="5_s7wll"]
 [ext_resource type="Texture2D" uid="uid://4ip7w0yjoc65" path="res://res/img/tapis.png" id="6_bgw1u"]
 [ext_resource type="PackedScene" uid="uid://bsvnmr1cr31y2" path="res://src/recipes_manager.tscn" id="7_flfml"]
@@ -54,14 +54,10 @@ offset_right = 1511.0
 offset_bottom = 857.0
 theme_override_colors/background_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 70
-text = "ccdcdfcdfvfvfdfvdvfdvdf
-"
 editable = false
 virtual_keyboard_enabled = false
 middle_mouse_paste_enabled = false
 wrap_mode = 1
-
-[node name="Textbox" parent="IATextboxes" instance=ExtResource("4_sijh3")]
 
 [node name="Button" type="Button" parent="."]
 offset_left = 790.0
@@ -118,9 +114,6 @@ position = Vector2(208, 348)
 position = Vector2(1714, 259)
 
 [node name="RecipesManager" parent="." instance=ExtResource("7_flfml")]
-SPAWN_INTERVAL_MIN = 3.0
-SPAWN_INTERVAL_MAX = 6.0
-TIMER_INTERVAL = 0.5
 
 [node name="Tuyau" type="Sprite2D" parent="."]
 position = Vector2(-64, 300)
@@ -135,6 +128,7 @@ texture = ExtResource("9_6wdqx")
 position = Vector2(1952, 300)
 scale = Vector2(-1, 1.3)
 texture = ExtResource("8_wht4i")
+
 [node name="RecipePanel" parent="." instance=ExtResource("9_rft4q")]
 visible = false
 
