@@ -1,17 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://bfyde53g6pla1"]
+[gd_scene load_steps=13 format=3 uid="uid://bfyde53g6pla1"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_4hrhh"]
 [ext_resource type="Texture2D" uid="uid://yxrqdgfwt4x" path="res://res/img/mockup_dax.png" id="1_katgu"]
 [ext_resource type="PackedScene" uid="uid://dxlbc6wto7a57" path="res://src/mixer.tscn" id="3_h1sid"]
-[ext_resource type="Texture2D" uid="uid://b2wk70bgifw7o" path="res://icon.svg" id="4_0plg6"]
-[ext_resource type="PackedScene" uid="uid://ddyksiuwwuwih" path="res://src/Ingredient.tscn" id="5_hq05h"]
+[ext_resource type="PackedScene" uid="uid://ba5k6m3m483gu" path="res://src/recipe_pannel.tscn" id="4_kbdc0"]
 [ext_resource type="Script" path="res://src/TapisIngredients.gd" id="5_s7wll"]
 [ext_resource type="Texture2D" uid="uid://4ip7w0yjoc65" path="res://res/img/tapis.png" id="6_bgw1u"]
 [ext_resource type="PackedScene" uid="uid://bsvnmr1cr31y2" path="res://src/recipes_manager.tscn" id="7_flfml"]
 
 [sub_resource type="AudioStream" id="AudioStream_v25gu"]
-
-[sub_resource type="Theme" id="Theme_gnvgx"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_jqgvs"]
 a = Vector2(-1, 1085)
@@ -43,22 +40,16 @@ texture = ExtResource("1_katgu")
 stream = SubResource("AudioStream_v25gu")
 
 [node name="IATextboxes" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="IATextManager" type="Node" parent="IATextboxes"]
 
-[node name="Label" type="Label" parent="IATextboxes"]
-offset_left = 282.0
-offset_top = 171.0
-offset_right = 755.0
-offset_bottom = 570.0
-theme = SubResource("Theme_gnvgx")
-theme_override_font_sizes/font_size = 60
-text = "Faster, rat"
-
 [node name="TextEdit" type="TextEdit" parent="IATextboxes"]
-offset_right = 884.0
-offset_bottom = 217.0
+visible = false
+offset_left = 755.0
+offset_top = 209.0
+offset_right = 1551.0
+offset_bottom = 857.0
+theme_override_colors/background_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 70
 text = "ccdcdfcdfvfvfdfvdvfdvdf
 "
@@ -70,39 +61,11 @@ wrap_mode = 1
 [node name="Recipes" type="CanvasLayer" parent="UI"]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/Recipes"]
-offset_right = 359.0
-offset_bottom = 660.0
+custom_minimum_size = Vector2(400, 300)
+offset_right = 400.0
+offset_bottom = 300.0
 
-[node name="Panel" type="TextureRect" parent="UI/Recipes/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("4_0plg6")
-stretch_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Recipes/VBoxContainer/Panel"]
-layout_mode = 2
-offset_top = -4.0
-offset_right = 40.0
-offset_bottom = -4.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Recipes/VBoxContainer/Panel/VBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="UI/Recipes/VBoxContainer/Panel/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Recipes/VBoxContainer/Panel/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="UI/Recipes/VBoxContainer/Panel/VBoxContainer/HBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect2" type="TextureRect" parent="UI/Recipes/VBoxContainer/Panel/VBoxContainer/HBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect3" type="TextureRect" parent="UI/Recipes/VBoxContainer/Panel/VBoxContainer/HBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="HSlider" type="HSlider" parent="UI/Recipes/VBoxContainer/Panel/VBoxContainer"]
+[node name="Panel" parent="UI/Recipes/VBoxContainer" instance=ExtResource("4_kbdc0")]
 layout_mode = 2
 
 [node name="Button" type="Button" parent="."]
