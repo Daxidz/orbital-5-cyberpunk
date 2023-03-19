@@ -4,6 +4,11 @@ var bodies_in_mixer = []
 
 signal mixed(ingerdients_mixed)
 
+
+var mixing: bool = false
+
+var cur_ingredients = []
+
 func _on_mix_area_body_entered(body):
 	if body.is_in_group("ingr"):
 		print(str(body) + " ENTER")
@@ -17,22 +22,29 @@ func _on_mix_area_body_exited(body):
 			body.modulate = Color(1,1,1,1)
 			bodies_in_mixer.erase(body)
 
+
 func mix():
+	if not mixing:
+		mixing = true
+		if bodies_in_mixer.size() == 0:
+			return
+		for b in bodies_in_mixer:
+			cur_ingredients.push_back(b.ingr_name)
+			b.queue_free()
+		$AnimatedSprite2D.animation_finished.connect(_on_animated_sprite_2d_animation_finished)
+		$AnimatedSprite2D.play("mixing")
+			
+		bodies_in_mixer.clear()
+		if !$Mix.is_playing():
+			$Mix.play()
+
+
+func send_ingredients():
 	var ingredients_names = []
 	
-	if bodies_in_mixer.size() == 0:
-		return
-	for b in bodies_in_mixer:
-		ingredients_names.push_back(b.ingr_name)
-	emit_signal("mixed", ingredients_names)
+	emit_signal("mixed", cur_ingredients)
+	cur_ingredients.clear()
 	
-	if !$Mix.is_playing():
-		$Mix.play()
-	
-	for b in bodies_in_mixer:
-		b.queue_free()
-		
-	bodies_in_mixer.clear()
 
 
 func _on_bord_body_entered(body):
@@ -40,3 +52,13 @@ func _on_bord_body_entered(body):
 		var pitch = randf_range(0.7, 1.4)
 		$Collision.pitch_scale = pitch
 		$Collision.play()
+
+func end_mixing():
+	mixing = false
+	send_ingredients()
+	$AnimatedSprite2D.play("default")
+	$AnimatedSprite2D.animation_finished.disconnect(_on_animated_sprite_2d_animation_finished)
+
+func _on_animated_sprite_2d_animation_finished():
+	if mixing:
+		end_mixing()

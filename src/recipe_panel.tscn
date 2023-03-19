@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://5unhdvcfbxs3"]
+[gd_scene load_steps=6 format=3 uid="uid://5unhdvcfbxs3"]
 
-[ext_resource type="Texture2D" uid="uid://b2wk70bgifw7o" path="res://icon.svg" id="1_wxxja"]
-[ext_resource type="Texture2D" uid="uid://bgcp0esr0akll" path="res://res/img/mixer.png" id="2_ulxyl"]
+[ext_resource type="Texture2D" uid="uid://ejxee1w5bk7o" path="res://res/img/ui/fondRecettes.svg" id="1_6t78y"]
 [ext_resource type="Texture2D" uid="uid://c3ljnmxo4m6ux" path="res://res/img/ingredients/ampoule.svg" id="3_8mwrm"]
 [ext_resource type="Texture2D" uid="uid://dh72gdkithqyd" path="res://res/img/ingredients/boulon.svg" id="4_28l5s"]
 [ext_resource type="Texture2D" uid="uid://bwh2rg3puigin" path="res://res/img/ingredients/brocoli.svg" id="5_uddyp"]
@@ -10,39 +9,31 @@
 [node name="RecipePanel" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
-scale = Vector2(2.03906, 0.640625)
-texture = ExtResource("1_wxxja")
+scale = Vector2(1, 1.39437)
+texture = ExtResource("1_6t78y")
 centered = false
 
-[node name="RecipeIcon" type="Sprite2D" parent="Background"]
-visible = false
-position = Vector2(18.636, 62.439)
-scale = Vector2(0.157796, 1)
-texture = ExtResource("2_ulxyl")
-
 [node name="Ingredient1" type="Sprite2D" parent="Background"]
-visible = false
-position = Vector2(34.9863, 48.7805)
-scale = Vector2(0.167443, 0.366999)
+position = Vector2(58, 24.3838)
+scale = Vector2(0.3, 0.215152)
 texture = ExtResource("3_8mwrm")
 
 [node name="Ingredient2" type="Sprite2D" parent="Background"]
-visible = false
-position = Vector2(61.9595, 50.3415)
-scale = Vector2(0.118351, 0.34476)
+position = Vector2(149, 27.2525)
+scale = Vector2(0.3, 0.215152)
 texture = ExtResource("4_28l5s")
 
 [node name="Ingredient3" type="Sprite2D" parent="Background"]
-visible = false
-position = Vector2(88.9327, 50.3415)
-scale = Vector2(0.114057, 0.380439)
+position = Vector2(256, 25.8182)
+scale = Vector2(0.3, 0.215152)
 texture = ExtResource("5_uddyp")
 
 [node name="TimerBar" type="TextureProgressBar" parent="Background"]
-offset_left = 3.92338
-offset_top = 101.463
-offset_right = 483.923
-offset_bottom = 192.463
-scale = Vector2(0.25, 0.25)
+texture_filter = 1
+offset_left = 28.0
+offset_top = 53.7879
+offset_right = 428.0
+offset_bottom = 64.7879
+scale = Vector2(0.7, 2)
 value = 50.0
 texture_progress = ExtResource("6_qqfdw")

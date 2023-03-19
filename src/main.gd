@@ -23,9 +23,18 @@ func _input(event):
 func _on_button_pressed():
 	$Mixer.mix()
 	
-func _on_mixed(ingredients_mixed: Array):
-	$RecipesManager.is_ongoing_recipe_valid(ingredients_mixed)
 	
+func spawn_glass():
+	var idx = randi_range(3,6)
+	var glass_tex = load("res://res/img/verres/glass"+str(idx)+".png")
+	$GlassResult.texture = glass_tex
+	
+func _on_mixed(ingredients_mixed: Array):
+	var recipe_ok = $RecipesManager.is_ongoing_recipe_valid(ingredients_mixed)
+	
+	if recipe_ok:
+		spawn_glass()
+		print("Yay!!")
 	
 func _on_ingredient_spawned():
 	nb_ingr_total += 1

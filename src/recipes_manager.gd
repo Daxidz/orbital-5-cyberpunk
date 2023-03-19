@@ -51,7 +51,7 @@ func redraw_timers():
 
 	for i in range(self.recipes_panels.size()):
 		var panel = self.recipes_panels[i] as Node2D
-		var timer_bar = panel.get_child(0).get_child(4) as TextureProgressBar
+		var timer_bar = panel.get_child(0).get_child(3) as TextureProgressBar
 		
 		var elapsed = (now - self.ongoing_recipes[i].time) / 1000
 		var progress = 100 - (elapsed / RECIPE_TIME_EXPIRATION) * 100
@@ -93,10 +93,10 @@ func redraw_recipes():
 			var sprite = panel.get_child(0).get_child(j + 1) as Sprite2D
 			sprite.set_texture(TEXTURES[ingredient])
 			sprite.show()
-		var timer_bar = panel.get_child(0).get_child(4) as TextureProgressBar
+		var timer_bar = panel.get_child(0).get_child(3) as TextureProgressBar
 		timer_bar.set_value_no_signal(60)
-		panel.position.x = x
-		panel.position.y = y + ((80 + 10) * i)
+		panel.position.x = x-69 # nice
+		panel.position.y = y+10 + ((71 + 40) * i)
 		main.add_child(panel)
 		self.recipes_panels.push_back(panel)
 		i += 1

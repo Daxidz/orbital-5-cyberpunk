@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bfyde53g6pla1"]
+[gd_scene load_steps=18 format=3 uid="uid://bfyde53g6pla1"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_4hrhh"]
 [ext_resource type="Texture2D" uid="uid://dpjeaqibwc7kt" path="res://res/img/background.png" id="2_3o384"]
@@ -8,9 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://bsvnmr1cr31y2" path="res://src/recipes_manager.tscn" id="7_flfml"]
 [ext_resource type="Texture2D" uid="uid://qw5y3u0bp6cm" path="res://res/img/TUYAUDEMI.png" id="8_sx4yy"]
 [ext_resource type="Texture2D" uid="uid://li7egooj1puj" path="res://res/img/tuyau.svg" id="8_wht4i"]
-[ext_resource type="Texture2D" uid="uid://b54ukeo1sasxe" path="res://res/img/ecran.svg" id="9_6wdqx"]
+[ext_resource type="Texture2D" uid="uid://52gep52h2nv" path="res://res/img/ui/ecran.svg" id="9_aj3gd"]
 [ext_resource type="PackedScene" uid="uid://5unhdvcfbxs3" path="res://src/recipe_panel.tscn" id="9_rft4q"]
 [ext_resource type="PackedScene" uid="uid://nf8sr3ityc52" path="res://src/text_boxes_manager.tscn" id="10_s6m7u"]
+[ext_resource type="Texture2D" uid="uid://b41p1bdg2gfoy" path="res://res/img/verres/glass4.png" id="12_h4dkd"]
 
 [sub_resource type="AudioStream" id="AudioStream_v25gu"]
 
@@ -34,12 +35,13 @@ script = ExtResource("1_4hrhh")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-64, 0)
+position = Vector2(-65, -1)
+scale = Vector2(1.01, 1.01)
 texture = ExtResource("2_3o384")
 centered = false
 
 [node name="Mixer" parent="." instance=ExtResource("3_h1sid")]
-position = Vector2(755, 522)
+position = Vector2(763, 463)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStream_v25gu")
@@ -131,9 +133,9 @@ scale = Vector2(1, 1.25109)
 texture = ExtResource("8_sx4yy")
 
 [node name="Ecran" type="Sprite2D" parent="."]
-position = Vector2(415, 613)
+position = Vector2(432, 585)
 scale = Vector2(-1, 1)
-texture = ExtResource("9_6wdqx")
+texture = ExtResource("9_aj3gd")
 centered = false
 
 [node name="Tuyau2" type="Sprite2D" parent="."]
@@ -166,6 +168,12 @@ initial_velocity_min = 10.0
 initial_velocity_max = 10.0
 scale_amount_min = 4.0
 scale_amount_max = 4.0
+
+[node name="GlassResult" type="Sprite2D" parent="."]
+position = Vector2(1357, 658)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("12_h4dkd")
+centered = false
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="TapisIngredients/Timer" to="TapisIngredients" method="_on_timer_timeout"]

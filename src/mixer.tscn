@@ -1,10 +1,18 @@
-[gd_scene load_steps=12 format=3 uid="uid://dlqyuil05a5mb"]
+[gd_scene load_steps=21 format=3 uid="uid://dlqyuil05a5mb"]
 
 [ext_resource type="Script" path="res://src/Mixer.gd" id="1_ph3tc"]
 [ext_resource type="Texture2D" uid="uid://bgcp0esr0akll" path="res://res/img/mixer.png" id="2_phmpb"]
 [ext_resource type="AudioStream" uid="uid://dncaw0cw8qng5" path="res://res/sounds/Electric Driller Spin 1.wav" id="3_e2jeo"]
 [ext_resource type="AudioStream" uid="uid://b3rkkgbeyedyv" path="res://res/sounds/collision_metal_soft_01.wav" id="4_q32lu"]
 [ext_resource type="Texture2D" uid="uid://tkml2h2a0m7o" path="res://res/img/mixer/mixer-20230319T000010Z-001/mixer/mixer_full_0.png" id="5_35wlj"]
+[ext_resource type="Texture2D" uid="uid://d0b6buyj5fogr" path="res://res/img/mixer/MixerSpriteSheet/mixer_empty.png" id="6_e8auk"]
+[ext_resource type="Texture2D" uid="uid://cip3guo6nfkqp" path="res://res/img/mixer/MixerSpriteSheet/mixer_half_0.png" id="7_gbomv"]
+[ext_resource type="Texture2D" uid="uid://c3ew0ijno4am6" path="res://res/img/mixer/MixerSpriteSheet/mixer_half_1.png" id="8_3bin4"]
+[ext_resource type="Texture2D" uid="uid://du1om62qsl81p" path="res://res/img/mixer/MixerSpriteSheet/mixer_half_2.png" id="9_73bi5"]
+[ext_resource type="Texture2D" uid="uid://ccx6pyurhamjp" path="res://res/img/mixer/MixerSpriteSheet/mixer_half_3.png" id="10_aqf81"]
+[ext_resource type="Texture2D" uid="uid://1jq3vpwjenua" path="res://res/img/mixer/MixerSpriteSheet/mixer_full_1.png" id="12_miw5n"]
+[ext_resource type="Texture2D" uid="uid://b7auatdqkk3mg" path="res://res/img/mixer/MixerSpriteSheet/mixer_full_2.png" id="13_bnd8x"]
+[ext_resource type="Texture2D" uid="uid://bradi7s7ba211" path="res://res/img/mixer/MixerSpriteSheet/mixer_full_3.png" id="14_2io07"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_xvotu"]
 a = Vector2(-40, -235)
@@ -29,6 +37,73 @@ b = Vector2(-5, -21)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_5o8nl"]
 a = Vector2(25, -217)
 b = Vector2(-49, 127)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pp47c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_e8auk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_gbomv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3bin4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_73bi5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_aqf81")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_aqf81")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_73bi5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_aqf81")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_miw5n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_bnd8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_2io07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_bnd8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_miw5n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_2io07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_bnd8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_2io07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_bnd8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_2io07")
+}],
+"loop": false,
+"name": &"mixing",
+"speed": 10.0
+}]
 
 [node name="Mixer" type="Node2D"]
 script = ExtResource("1_ph3tc")
@@ -60,7 +135,7 @@ shape = SubResource("SegmentShape2D_xqpwp")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MixArea"]
 position = Vector2(-276, -484)
-polygon = PackedVector2Array(404, 896, 503, 899, 532, 677, 354, 671)
+polygon = PackedVector2Array(406, 885, 508, 888, 544, 671, 357, 672)
 
 [node name="Mix" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_e2jeo")
@@ -84,10 +159,22 @@ position = Vector2(282, 296)
 shape = SubResource("SegmentShape2D_5o8nl")
 
 [node name="MixerFull0" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, 29)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("5_35wlj")
 centered = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 44)
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_pp47c")
+animation = &"mixing"
+centered = false
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="body_entered" from="MixArea" to="." method="_on_mix_area_body_entered"]
 [connection signal="body_exited" from="MixArea" to="." method="_on_mix_area_body_exited"]
