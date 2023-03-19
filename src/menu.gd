@@ -24,6 +24,7 @@ func show_tuto(show: bool):
 	$Tuto.visible = show
 
 func _on_play_pressed():
+	print("PLAY PRESSE")
 	emit_signal("play_clicked")
 
 

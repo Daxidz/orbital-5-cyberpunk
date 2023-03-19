@@ -72,5 +72,5 @@ func _on_timer_timeout():
 	$Liquid.play()
 	
 func _on_texture_button_pressed():
-	print("ihuewieurh")
+	print("Mix pressed")
 	mix()

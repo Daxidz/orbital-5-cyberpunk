@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cc2dmadr060lr"]
+[gd_scene load_steps=12 format=3 uid="uid://cc2dmadr060lr"]
 
 [ext_resource type="Script" path="res://src/scene_manager.gd" id="1_inxua"]
 [ext_resource type="PackedScene" uid="uid://cpgpja6fetd2t" path="res://src/menu.tscn" id="2_fhx1r"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cv0h1swlp5rdf" path="res://res/img/ui/buttons/buttonMenu.svg" id="4_amn1g"]
 [ext_resource type="Texture2D" uid="uid://by507oo451gwm" path="res://res/img/ui/buttonMenuPush.png" id="5_8jeyd"]
 [ext_resource type="Texture2D" uid="uid://cr0r0qdlpfsci" path="res://res/img/ui/buttonMenuHover.svg" id="6_dekn1"]
+[ext_resource type="Texture2D" uid="uid://dg6knhop0kkjs" path="res://res/img/ui/tuto.png" id="7_u641i"]
+[ext_resource type="Texture2D" uid="uid://bg6c4hab1m8l4" path="res://res/img/ui/credits.svg" id="8_5g0dk"]
 
 [sub_resource type="Animation" id="Animation_dbpmi"]
 resource_name = "fade_in"
@@ -72,14 +74,6 @@ script = ExtResource("1_inxua")
 
 [node name="Menu" parent="." instance=ExtResource("2_fhx1r")]
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-z_index = 200
-offset_right = 1922.0
-offset_bottom = 1085.0
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_dntj8")
@@ -102,6 +96,28 @@ offset_bottom = 1002.0
 texture_normal = ExtResource("4_amn1g")
 texture_pressed = ExtResource("5_8jeyd")
 texture_hover = ExtResource("6_dekn1")
+
+[node name="Tuto" type="TextureRect" parent="."]
+visible = false
+offset_left = -309.0
+offset_top = -5.0
+offset_right = -309.0
+offset_bottom = -5.0
+mouse_filter = 2
+texture = ExtResource("7_u641i")
+
+[node name="Credits" type="TextureRect" parent="."]
+visible = false
+mouse_filter = 2
+texture = ExtResource("8_5g0dk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+z_index = 200
+offset_right = 1922.0
+offset_bottom = 1085.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="DeathScreen/ReturnMenuButton" to="." method="_on_return_menu_button_pressed"]
