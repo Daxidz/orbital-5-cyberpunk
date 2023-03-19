@@ -7,27 +7,27 @@
 [ext_resource type="Texture2D" uid="uid://tkml2h2a0m7o" path="res://res/img/mixer/mixer-20230319T000010Z-001/mixer/mixer_full_0.png" id="5_35wlj"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_xvotu"]
-a = Vector2(-15, -135)
-b = Vector2(22, 130)
+a = Vector2(-40, -235)
+b = Vector2(34, 131)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_3jchw"]
-a = Vector2(-137, -7)
-b = Vector2(133, 1)
+a = Vector2(-134, 0)
+b = Vector2(9, 8)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_xqpwp"]
-a = Vector2(35, -124)
-b = Vector2(-49, 127)
+a = Vector2(9, -234)
+b = Vector2(-62, 137)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_4gypa"]
-a = Vector2(-15, -135)
-b = Vector2(22, 130)
+a = Vector2(-291, -707)
+b = Vector2(-219, -356)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_fqphy"]
-a = Vector2(-137, -7)
-b = Vector2(133, 1)
+a = Vector2(-133, -24)
+b = Vector2(-5, -21)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_5o8nl"]
-a = Vector2(35, -124)
+a = Vector2(25, -217)
 b = Vector2(-49, 127)
 
 [node name="Mixer" type="Node2D"]
@@ -45,21 +45,22 @@ texture = ExtResource("2_phmpb")
 [node name="RigidBody2D" type="StaticBody2D" parent="."]
 
 [node name="BordG" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(316, 802)
+position = Vector2(80, 296)
 shape = SubResource("SegmentShape2D_xvotu")
 
 [node name="Fond" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(473, 929)
+position = Vector2(248, 428)
 shape = SubResource("SegmentShape2D_3jchw")
 
 [node name="BordDroite" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(653, 802)
+position = Vector2(309, 296)
 shape = SubResource("SegmentShape2D_xqpwp")
 
 [node name="MixArea" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MixArea"]
-polygon = PackedVector2Array(339, 925, 604, 929, 689, 675, 297, 667)
+position = Vector2(-276, -484)
+polygon = PackedVector2Array(404, 896, 503, 899, 532, 677, 354, 671)
 
 [node name="Mix" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_e2jeo")
@@ -75,11 +76,11 @@ position = Vector2(340, 779)
 shape = SubResource("SegmentShape2D_4gypa")
 
 [node name="Fond" type="CollisionShape2D" parent="Bord"]
-position = Vector2(492, 908)
+position = Vector2(248, 443)
 shape = SubResource("SegmentShape2D_fqphy")
 
 [node name="BordDr" type="CollisionShape2D" parent="Bord"]
-position = Vector2(630, 802)
+position = Vector2(282, 296)
 shape = SubResource("SegmentShape2D_5o8nl")
 
 [node name="MixerFull0" type="Sprite2D" parent="."]

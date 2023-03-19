@@ -5,12 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://dlqyuil05a5mb" path="res://src/mixer.tscn" id="3_h1sid"]
 [ext_resource type="Script" path="res://src/TapisIngredients.gd" id="5_s7wll"]
 [ext_resource type="Texture2D" uid="uid://4ip7w0yjoc65" path="res://res/img/tapis.png" id="6_bgw1u"]
-[ext_resource type="PackedScene" path="res://src/recipes_manager.tscn" id="7_flfml"]
+[ext_resource type="PackedScene" uid="uid://bsvnmr1cr31y2" path="res://src/recipes_manager.tscn" id="7_flfml"]
 [ext_resource type="Texture2D" uid="uid://qw5y3u0bp6cm" path="res://res/img/TUYAUDEMI.png" id="8_sx4yy"]
 [ext_resource type="Texture2D" uid="uid://li7egooj1puj" path="res://res/img/tuyau.svg" id="8_wht4i"]
 [ext_resource type="Texture2D" uid="uid://b54ukeo1sasxe" path="res://res/img/ecran.svg" id="9_6wdqx"]
 [ext_resource type="PackedScene" uid="uid://5unhdvcfbxs3" path="res://src/recipe_panel.tscn" id="9_rft4q"]
-[ext_resource type="PackedScene" path="res://src/text_boxes_manager.tscn" id="10_s6m7u"]
+[ext_resource type="PackedScene" uid="uid://nf8sr3ityc52" path="res://src/text_boxes_manager.tscn" id="10_s6m7u"]
 
 [sub_resource type="AudioStream" id="AudioStream_v25gu"]
 
@@ -154,17 +154,18 @@ visible = false
 
 [node name="TextBoxesManager" parent="." instance=ExtResource("10_s6m7u")]
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="ParticlesGraviitron" type="CPUParticles2D" parent="."]
 position = Vector2(963, 259)
-amount = 60
+amount = 50
 lifetime = 5.0
+preprocess = 50.0
 emission_shape = 3
-emission_rect_extents = Vector2(600, 100)
+emission_rect_extents = Vector2(700, 100)
 gravity = Vector2(0, 0)
 initial_velocity_min = 10.0
 initial_velocity_max = 10.0
-scale_amount_min = 3.0
-scale_amount_max = 3.0
+scale_amount_min = 4.0
+scale_amount_max = 4.0
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="TapisIngredients/Timer" to="TapisIngredients" method="_on_timer_timeout"]
