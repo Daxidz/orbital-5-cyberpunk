@@ -159,8 +159,6 @@ flip_h = true
 
 [node name="RecipePanel" parent="." instance=ExtResource("9_rft4q")]
 visible = false
-z_index = 15
-z_as_relative = false
 
 [node name="TextBoxesManager" parent="." instance=ExtResource("10_s6m7u")]
 

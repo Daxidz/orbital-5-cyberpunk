@@ -109,7 +109,7 @@ func spawn_new_recipe():
 	var ingredients = []
 	for i in range(nb_ingredients):
 		ingredients.push_back(TEXTURES.keys().pick_random())
-	var recipe: Recipe = Recipe.new(ingredients, Time.get_ticks_msec())
+	var recipe: Recipe = Recipe.new(ingredients.duplicate(), Time.get_ticks_msec())
 	self.ongoing_recipes.append(recipe)
 
 	self.redraw_recipes()
@@ -125,8 +125,9 @@ func _on_timer_timeout():
 		self.spawn_new_recipe()
 
 func is_ongoing_recipe_valid(ingredients: Array):
-	print_debug("is_ongoing_recipe_valid()")
 	ingredients.sort()
+	
+	print_debug(ingredients)
 	
 	var same = self.ongoing_recipes.filter(func(recipe): return recipe.ingredients == ingredients)
 	if (same.size() > 0):
@@ -135,7 +136,8 @@ func is_ongoing_recipe_valid(ingredients: Array):
 			if (recipe.ingredients == ingredients):
 				self.ongoing_recipes.erase(recipe)
 				break
-				
+	
+	print_debug("is_ongoing_recipe_valid(): %d" % same.size())
 	self.redraw_recipes()
 	return (same.size() > 0)
 
