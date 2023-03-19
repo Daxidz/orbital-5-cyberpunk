@@ -83,8 +83,9 @@ shape = SubResource("SegmentShape2D_ptw77")
 [node name="SegTop" type="CollisionShape2D" parent="WorldBoundaries"]
 shape = SubResource("SegmentShape2D_a81mj")
 
-[node name="TapisIngredients" type="Node2D" parent="."]
+[node name="TapisIngredients" type="Node2D" parent="." node_paths=PackedStringArray("recipesManager")]
 script = ExtResource("5_s7wll")
+recipesManager = NodePath("../RecipesManager")
 
 [node name="Timer" type="Timer" parent="TapisIngredients"]
 
