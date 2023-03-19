@@ -199,7 +199,7 @@ scale_amount_curve = SubResource("Curve_ksps1")
 [node name="ScoreManager" parent="." instance=ExtResource("13_n74ld")]
 z_index = 20
 z_as_relative = false
-position = Vector2(1646, 991)
+position = Vector2(43, 978)
 scale = Vector2(0.6, 0.6)
 
 [connection signal="timeout" from="TapisIngredients/Timer" to="TapisIngredients" method="_on_timer_timeout"]
