@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://f6m10yeanxsh"]
+
+[ext_resource type="Script" path="res://src/score_manager.gd" id="1_blcx3"]
+[ext_resource type="FontFile" uid="uid://cjrpxkeokkqfm" path="res://res/fonts/Industry/Industry-Bold.ttf" id="2_gy3jw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fi3f6"]
+font = ExtResource("2_gy3jw")
+font_size = 72
+
+[node name="ScoreManager" type="Node2D"]
+script = ExtResource("1_blcx3")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(200, 0)
+offset_right = 40.0
+offset_bottom = 23.0
+text = "+420"
+label_settings = SubResource("LabelSettings_fi3f6")
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
