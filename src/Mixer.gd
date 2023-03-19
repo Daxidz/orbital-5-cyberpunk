@@ -7,12 +7,14 @@ signal mixed(ingerdients_mixed)
 func _on_mix_area_body_entered(body):
 	if body.is_in_group("ingr"):
 		print(str(body) + " ENTER")
+		body.modulate = Color(1,1,1,0.5)
 		bodies_in_mixer.push_back(body)
 
 func _on_mix_area_body_exited(body):
 	if body.is_in_group("ingr"):
 		if bodies_in_mixer.find(body) != -1:
 			print(str(body) + " EXIT")
+			body.modulate = Color(1,1,1,1)
 			bodies_in_mixer.erase(body)
 
 func mix():

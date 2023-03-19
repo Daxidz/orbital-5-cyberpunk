@@ -38,7 +38,7 @@ func _on_ingredient_spawned():
 	
 	if nb_ingr_total % 5 == 0:
 		print($TextBoxesManager.time_between_spawn)
-		$TextBoxesManager.time_between_spawn -= 0.1
+		$TextBoxesManager.time_between_spawn -= 0.05
 		if $TextBoxesManager.time_between_spawn < 0.0:
 			$TextBoxesManager.time_between_spawn = 0
 

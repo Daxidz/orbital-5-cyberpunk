@@ -154,5 +154,17 @@ visible = false
 
 [node name="TextBoxesManager" parent="." instance=ExtResource("10_s6m7u")]
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(963, 259)
+amount = 60
+lifetime = 5.0
+emission_shape = 3
+emission_rect_extents = Vector2(600, 100)
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+scale_amount_min = 3.0
+scale_amount_max = 3.0
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="TapisIngredients/Timer" to="TapisIngredients" method="_on_timer_timeout"]

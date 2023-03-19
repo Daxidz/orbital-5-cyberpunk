@@ -26,7 +26,7 @@ func _process(delta):
 		return
 	
 	if selected:
-		global_position = lerp(global_position, get_global_mouse_position(), 0.2)
+		global_position = lerp(global_position, get_global_mouse_position(), 0.3)
 
 
 func _input(event):
@@ -45,5 +45,4 @@ func _on_area_2d_input_event(viewport, event, shape_idx):
 		$AnimationPlayer.pause()
 		freeze = true
 		on_tapis = false
-		
-	
+

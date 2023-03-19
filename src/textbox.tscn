@@ -1,16 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0mnqhuhjegr3"]
+[gd_scene load_steps=3 format=3 uid="uid://c0mnqhuhjegr3"]
 
 [ext_resource type="Script" path="res://src/textbox.gd" id="1_xm74n"]
+[ext_resource type="Texture2D" uid="uid://bgpegfgrbblcj" path="res://res/img/ui/popUp.svg" id="2_5gvfq"]
 
 [node name="TextBox" type="Node2D"]
 script = ExtResource("1_xm74n")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
 z_index = 1
 anchors_preset = 10
 anchor_right = 1.0
+offset_right = 300.0
+offset_bottom = 200.0
 grow_horizontal = 2
-color = Color(0, 0, 0, 0.890196)
+texture = ExtResource("2_5gvfq")
 
 [node name="Label" type="Label" parent="."]
 z_index = 1
@@ -21,6 +24,7 @@ anchor_bottom = 1.015
 offset_right = 400.0
 offset_bottom = 232.0
 theme_override_font_sizes/font_size = 40
+text = "djzgweuzgcdb"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3

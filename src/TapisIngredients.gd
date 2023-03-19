@@ -3,7 +3,7 @@ extends Node2D
 signal ingredient_threshold
 signal ingredient_spawned
 
-const NAMES = ["ampoule", "boulon", "brocoli", "essence", "pile"]
+const NAMES = ["ampoule", "boulon", "brocoli", "essence", "pile", "butterfly"]
 
 @onready var Ingredient = preload("res://src/Ingredient.tscn")
 
@@ -25,8 +25,7 @@ func _process(delta):
 
 func spawn_ingredient():
 	emit_signal("ingredient_spawned")
-	if nb_ingredients_total % 10 == 0: 
-#		speed_current = speed_current * 1.1
+	if nb_ingredients_total % 10 == 0:
 		emit_signal("ingredient_threshold")
 	var ingr = Ingredient.instantiate()
 	ingr.position.x = $SpawnPosDown.position.x
@@ -40,6 +39,6 @@ func spawn_ingredient():
 
 func _on_timer_timeout():
 	spawn_ingredient()
-	spawn_interval = randf_range(0.5, 1.0)
+	spawn_interval = randf_range(0.6, 1.0)
 	$Timer.start(spawn_interval)
 	

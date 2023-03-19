@@ -7,12 +7,12 @@ extends Node2D
 
 var text_size: int
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	visible = false
 	label.text = text
 	label.visible_ratio = 1.0
-	$ColorRect.size = label.size+ Vector2(40,20)
+	$ColorRect.size = label.size#+ Vector2(40,20)
 	label.visible_characters = 0
 	text_size =label.get_total_character_count()
 	visible = true

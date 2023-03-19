@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dlqyuil05a5mb"]
+[gd_scene load_steps=12 format=3 uid="uid://dlqyuil05a5mb"]
 
 [ext_resource type="Script" path="res://src/Mixer.gd" id="1_ph3tc"]
 [ext_resource type="Texture2D" uid="uid://bgcp0esr0akll" path="res://res/img/mixer.png" id="2_phmpb"]
 [ext_resource type="AudioStream" uid="uid://dncaw0cw8qng5" path="res://res/sounds/Electric Driller Spin 1.wav" id="3_e2jeo"]
 [ext_resource type="AudioStream" uid="uid://b3rkkgbeyedyv" path="res://res/sounds/collision_metal_soft_01.wav" id="4_q32lu"]
+[ext_resource type="Texture2D" uid="uid://tkml2h2a0m7o" path="res://res/img/mixer/mixer-20230319T000010Z-001/mixer/mixer_full_0.png" id="5_35wlj"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_xvotu"]
 a = Vector2(-15, -135)
@@ -33,6 +34,7 @@ b = Vector2(-49, 127)
 script = ExtResource("1_ph3tc")
 
 [node name="MixerSprite" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 1
 position = Vector2(494, 802)
 scale = Vector2(4, 4)
@@ -77,8 +79,14 @@ position = Vector2(492, 908)
 shape = SubResource("SegmentShape2D_fqphy")
 
 [node name="BordDr" type="CollisionShape2D" parent="Bord"]
-position = Vector2(630, 789)
+position = Vector2(630, 802)
 shape = SubResource("SegmentShape2D_5o8nl")
+
+[node name="MixerFull0" type="Sprite2D" parent="."]
+position = Vector2(0, 29)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_35wlj")
+centered = false
 
 [connection signal="body_entered" from="MixArea" to="." method="_on_mix_area_body_entered"]
 [connection signal="body_exited" from="MixArea" to="." method="_on_mix_area_body_exited"]
