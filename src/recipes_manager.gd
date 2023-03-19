@@ -10,6 +10,7 @@ var TIMER_TICKS_PER_SEC: float = 1 / TIMER_INTERVAL
 var ampoule_texture = preload("res://res/img/ingredients/ampoule.svg")
 var boulon_texture = preload("res://res/img/ingredients/boulon.svg")
 var brocoli_texture = preload("res://res/img/ingredients/brocoli.svg")
+var butterfly_texture = preload("res://res/img/ingredients/butterfly.svg")
 var essence_texture = preload("res://res/img/ingredients/essence.svg")
 var pile_texture = preload("res://res/img/ingredients/pile.svg")
 
@@ -21,14 +22,11 @@ var TEXTURES: Dictionary = {
 	"ampoule": ampoule_texture,
 	"boulon": boulon_texture,
 	"brocoli": brocoli_texture,
+	"butterfly": butterfly_texture,
 	"essence": essence_texture,
-	"pile": pile_texture
+	"pile": pile_texture,
 }
 
-var RECIPES: Array = [
-	Recipe.new(["essence", "pile"]),
-	Recipe.new(["boulon", "brocoli"]),
-]
 var ongoing_recipes: Array
 
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
@@ -106,8 +104,11 @@ func generate_next_spawn():
 	self.next_spawn_tick = self.timer_tick + self.rng.randf_range(SPAWN_INTERVAL_MIN * TIMER_TICKS_PER_SEC, SPAWN_INTERVAL_MAX * TIMER_TICKS_PER_SEC)
 
 func spawn_new_recipe():
-	var recipe: Recipe = RECIPES[self.rng.randi_range(0, RECIPES.size() - 1)].duplicate()
-	recipe.time = Time.get_ticks_msec()
+	var nb_ingredients = 3 if (self.rng.randf() >= 0.7) else 2;
+	var ingredients = []
+	for i in range(nb_ingredients):
+		ingredients.push_back(TEXTURES.keys().pick_random())
+	var recipe: Recipe = Recipe.new(ingredients, Time.get_ticks_msec())
 	self.ongoing_recipes.append(recipe)
 
 	self.redraw_recipes()
@@ -123,6 +124,7 @@ func _on_timer_timeout():
 		self.spawn_new_recipe()
 
 func is_ongoing_recipe_valid(ingredients: Array):
+	print_debug("is_ongoing_recipe_valid()")
 	ingredients.sort()
 	
 	var same = self.ongoing_recipes.filter(func(recipe): return recipe.ingredients == ingredients)
