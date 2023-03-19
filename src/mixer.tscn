@@ -14,6 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://1jq3vpwjenua" path="res://res/img/mixer/MixerSpriteSheet/mixer_full_1.png" id="12_miw5n"]
 [ext_resource type="Texture2D" uid="uid://b7auatdqkk3mg" path="res://res/img/mixer/MixerSpriteSheet/mixer_full_2.png" id="13_bnd8x"]
 [ext_resource type="Texture2D" uid="uid://bradi7s7ba211" path="res://res/img/mixer/MixerSpriteSheet/mixer_full_3.png" id="14_2io07"]
+[ext_resource type="Texture2D" uid="uid://la6koey8okv8" path="res://res/img/ui/btn_mixer_default.png" id="14_qlghh"]
+[ext_resource type="Texture2D" uid="uid://b7tfuxhf7gyoe" path="res://res/img/ui/btn_mixer_focus.png" id="15_apn73"]
+[ext_resource type="Texture2D" uid="uid://byowgvr7k74jk" path="res://res/img/ui/btn_mixer_hover.png" id="16_paunv"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_xvotu"]
 a = Vector2(-40, -235)
@@ -103,7 +106,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"mixing",
-"speed": 10.0
+"speed": 30.0
 }]
 
 [node name="Mixer" type="Node2D"]
@@ -178,8 +181,22 @@ animation = &"mixing"
 centered = false
 
 [node name="TextureButton" type="TextureButton" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 92.0
+offset_top = 469.0
+offset_right = 288.0
+offset_bottom = 569.0
+scale = Vector2(0.9, 0.9)
+texture_normal = ExtResource("14_qlghh")
+texture_pressed = ExtResource("15_apn73")
+texture_hover = ExtResource("16_paunv")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 125.0
+offset_top = 469.0
+offset_right = 235.0
+offset_bottom = 555.0
+theme_override_font_sizes/font_size = 60
+text = "MIX"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5

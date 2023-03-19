@@ -12,7 +12,7 @@ func _ready():
 	visible = false
 	label.text = text
 	label.visible_ratio = 1.0
-	$ColorRect.size = label.size+ Vector2(100,60)
+	$ColorRect.set_size(label.size+ Vector2(100,60))
 	label.visible_characters = 0
 	text_size =label.get_total_character_count()
 	visible = true
