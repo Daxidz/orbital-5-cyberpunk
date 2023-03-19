@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://dlqyuil05a5mb"]
+[gd_scene load_steps=22 format=3 uid="uid://dlqyuil05a5mb"]
 
 [ext_resource type="Script" path="res://src/Mixer.gd" id="1_ph3tc"]
 [ext_resource type="Texture2D" uid="uid://bgcp0esr0akll" path="res://res/img/mixer.png" id="2_phmpb"]
 [ext_resource type="AudioStream" uid="uid://dncaw0cw8qng5" path="res://res/sounds/Electric Driller Spin 1.wav" id="3_e2jeo"]
-[ext_resource type="AudioStream" uid="uid://b3rkkgbeyedyv" path="res://res/sounds/collision_metal_soft_01.wav" id="4_q32lu"]
+[ext_resource type="AudioStream" uid="uid://drxn8qgndr4he" path="res://res/sounds/Alchemy 10.wav" id="4_iraml"]
+[ext_resource type="AudioStream" uid="uid://cem7hr74pw26t" path="res://res/sounds/Home_Office_Kitchen_Glass_Cup_Set.wav" id="4_tsiiv"]
 [ext_resource type="Texture2D" uid="uid://tkml2h2a0m7o" path="res://res/img/mixer/mixer-20230319T000010Z-001/mixer/mixer_full_0.png" id="5_35wlj"]
 [ext_resource type="Texture2D" uid="uid://d0b6buyj5fogr" path="res://res/img/mixer/MixerSpriteSheet/mixer_empty.png" id="6_e8auk"]
 [ext_resource type="Texture2D" uid="uid://cip3guo6nfkqp" path="res://res/img/mixer/MixerSpriteSheet/mixer_half_0.png" id="7_gbomv"]
@@ -139,10 +140,14 @@ polygon = PackedVector2Array(406, 885, 508, 888, 544, 671, 357, 672)
 
 [node name="Mix" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_e2jeo")
-pitch_scale = 1.7
+
+[node name="Liquid" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_iraml")
+volume_db = 5.0
+pitch_scale = 0.85
 
 [node name="Collision" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_q32lu")
+stream = ExtResource("4_tsiiv")
 
 [node name="Bord" type="Area2D" parent="."]
 
@@ -176,6 +181,11 @@ centered = false
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="body_entered" from="MixArea" to="." method="_on_mix_area_body_entered"]
 [connection signal="body_exited" from="MixArea" to="." method="_on_mix_area_body_exited"]
 [connection signal="body_entered" from="Bord" to="." method="_on_bord_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -39,6 +39,8 @@ func mix():
 		bodies_in_mixer.clear()
 		if !$Mix.is_playing():
 			$Mix.play()
+			$Timer.start(0.5)
+			
 
 
 func send_ingredients():
@@ -64,3 +66,7 @@ func end_mixing():
 func _on_animated_sprite_2d_animation_finished():
 	if mixing:
 		end_mixing()
+
+
+func _on_timer_timeout():
+	$Liquid.play()

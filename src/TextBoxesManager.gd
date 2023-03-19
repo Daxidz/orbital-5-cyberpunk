@@ -13,5 +13,5 @@ func _on_timer_timeout():
 	tb.position = Vector2(randf_range(200, 1700), randf_range(100, 900))
 	tb.text = "iuzhdewiuh fekufiue fekfnejrfioo wedfce edfiewkjdf9erof "
 	add_child(tb)
-	
+	$Popup.play()
 	$Timer.start(time_between_spawn)

@@ -35,6 +35,7 @@ func _on_mixed(ingredients_mixed: Array):
 	if recipe_ok:
 		spawn_glass()
 		print("Yay!!")
+		$Yay.play()
 	
 func _on_ingredient_spawned():
 	nb_ingr_total += 1
