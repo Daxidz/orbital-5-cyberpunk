@@ -11,9 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://li7egooj1puj" path="res://res/img/tuyau.svg" id="8_wht4i"]
 [ext_resource type="Texture2D" uid="uid://52gep52h2nv" path="res://res/img/ui/ecran.svg" id="9_aj3gd"]
 [ext_resource type="PackedScene" uid="uid://5unhdvcfbxs3" path="res://src/recipe_panel.tscn" id="9_rft4q"]
-[ext_resource type="PackedScene" uid="uid://nf8sr3ityc52" path="res://src/text_boxes_manager.tscn" id="10_s6m7u"]
+[ext_resource type="PackedScene" uid="uid://dyownrjtnt80w" path="res://src/text_boxes_manager.tscn" id="10_s6m7u"]
 [ext_resource type="Texture2D" uid="uid://b41p1bdg2gfoy" path="res://res/img/verres/glass4.png" id="12_h4dkd"]
-[ext_resource type="PackedScene" uid="uid://f6m10yeanxsh" path="res://src/score_manager.tscn" id="13_n74ld"]
+[ext_resource type="PackedScene" uid="uid://w21jxvoygl2x" path="res://src/score_manager.tscn" id="13_n74ld"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_jqgvs"]
 a = Vector2(-1, 1085)

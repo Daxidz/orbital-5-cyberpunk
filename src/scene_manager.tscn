@@ -74,8 +74,10 @@ script = ExtResource("1_inxua")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
+z_index = 200
 offset_right = 1922.0
 offset_bottom = 1085.0
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -84,6 +86,7 @@ libraries = {
 }
 
 [node name="DeathScreen" type="Node2D" parent="."]
+visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="DeathScreen"]
 position = Vector2(1, -22)
@@ -91,7 +94,7 @@ scale = Vector2(1.01, 1.01)
 texture = ExtResource("3_dy8yw")
 centered = false
 
-[node name="TextureButton" type="TextureButton" parent="DeathScreen"]
+[node name="ReturnMenuButton" type="TextureButton" parent="DeathScreen"]
 offset_left = 1525.0
 offset_top = 901.0
 offset_right = 1849.0
@@ -101,3 +104,4 @@ texture_pressed = ExtResource("5_8jeyd")
 texture_hover = ExtResource("6_dekn1")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="DeathScreen/ReturnMenuButton" to="." method="_on_return_menu_button_pressed"]

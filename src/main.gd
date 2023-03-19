@@ -15,6 +15,7 @@ func start():
 func _ready():
 	$Mixer.connect("mixed", _on_mixed)
 	$TapisIngredients.ingredient_spawned.connect(_on_ingredient_spawned)
+	$ScoreManager.game_over.connect(_on_death)
 
 func _input(event):
 	
@@ -70,5 +71,7 @@ func _level_increase():
 signal game_over
 
 func _on_death():
+	
+	print(" GAME OVER")
 	emit_signal("game_over")
 	
