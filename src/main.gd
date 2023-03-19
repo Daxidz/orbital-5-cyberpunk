@@ -29,7 +29,7 @@ func _input(event):
 	
 	
 func spawn_glass():
-	var idx = randi_range(3,6)
+	var idx = randi_range(1,6)
 	var glass_tex = load("res://res/img/verres/glass"+str(idx)+".png")
 	$GlassResult.texture = glass_tex
 	var tween = create_tween()
