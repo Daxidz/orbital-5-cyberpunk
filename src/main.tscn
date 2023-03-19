@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://b4x27q77f3j0d" path="res://res/sounds/coin_06.wav" id="4_jaeg3"]
 [ext_resource type="Script" path="res://src/TapisIngredients.gd" id="5_s7wll"]
 [ext_resource type="Texture2D" uid="uid://4ip7w0yjoc65" path="res://res/img/tapis.png" id="6_bgw1u"]
-[ext_resource type="PackedScene" path="res://src/recipes_manager.tscn" id="7_flfml"]
+[ext_resource type="PackedScene" uid="uid://bsvnmr1cr31y2" path="res://src/recipes_manager.tscn" id="7_flfml"]
 [ext_resource type="Texture2D" uid="uid://qw5y3u0bp6cm" path="res://res/img/TUYAUDEMI.png" id="8_sx4yy"]
 [ext_resource type="Texture2D" uid="uid://li7egooj1puj" path="res://res/img/tuyau.svg" id="8_wht4i"]
 [ext_resource type="Texture2D" uid="uid://52gep52h2nv" path="res://res/img/ui/ecran.svg" id="9_aj3gd"]
@@ -134,7 +134,7 @@ scale = Vector2(1, 1.25109)
 texture = ExtResource("8_sx4yy")
 
 [node name="Ecran" type="Sprite2D" parent="."]
-position = Vector2(432, 585)
+position = Vector2(421, 463)
 scale = Vector2(-1, 1)
 texture = ExtResource("9_aj3gd")
 centered = false
@@ -193,6 +193,6 @@ damping_max = 11.11
 scale_amount_curve = SubResource("Curve_ksps1")
 
 [node name="ScoreManager" parent="." instance=ExtResource("13_n74ld")]
-position = Vector2(1701, 996)
+position = Vector2(1638, 996)
 
 [connection signal="timeout" from="TapisIngredients/Timer" to="TapisIngredients" method="_on_timer_timeout"]

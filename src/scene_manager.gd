@@ -4,13 +4,16 @@ extends Node2D
 
 var state: = 0
 
-#var 
+
+
 
 func _ready():
 	$Menu.play_clicked.connect(_on_play_pressed)
 	$Menu.tuto_clicked.connect(_on_tuto_pressed)
 	$Menu.credits_clicked.connect(_on_credits_pressed)
 	$Menu.quit_clicked.connect(_on_quit_pressed)
+	
+	
 
 
 func _input(event):
@@ -44,11 +47,18 @@ func _on_animation_player_animation_finished(anim_name):
 		if state == 1:
 			$Menu.show_tuto(false)
 			var main = main_scene.instantiate()
+			main.game_over.connect(_on_Game_over)
 			add_child(main)
 			$AnimationPlayer.play("fade_out")
+			state = 2
 		elif state == 0:
 			$Menu.show_tuto(true)
 			$AnimationPlayer.play("fade_out")
+#		elif state == 2:
+			
 			
 	if anim_name == "fade_out":
 		state += 1
+
+func _on_Game_over():
+	$AnimationPlayer.play("fade_in")

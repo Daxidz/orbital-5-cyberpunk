@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var text: String = "fiurhidrfjé ferf fer fer  erfeferferf ferferfer ergergf ei"
+@export var text: String = ""
 
 @onready var label: Label = $Label
 @export var text_speed: float = 25
@@ -22,7 +22,7 @@ func _on_timer_timeout():
 	label.visible_characters += 1
 	
 	if label.visible_characters == text_size:
-		$DestroyTimer.start(1)
+		$DestroyTimer.start(1.8)
 		return
 	
 	$Timer.start(1/text_speed)

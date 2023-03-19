@@ -70,6 +70,7 @@ func _on_animated_sprite_2d_animation_finished():
 
 func _on_timer_timeout():
 	$Liquid.play()
+	
 func _on_texture_button_pressed():
+	print("ihuewieurh")
 	mix()
-	pass # Replace with function body.

@@ -65,3 +65,10 @@ func _level_increase():
 	muted_bus = muted_bus+1
 	if muted_bus<4:
 		AudioServer.set_bus_mute(muted_bus, false)
+
+
+signal game_over
+
+func _on_death():
+	emit_signal("game_over")
+	

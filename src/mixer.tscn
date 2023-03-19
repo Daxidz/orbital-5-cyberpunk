@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dlqyuil05a5mb"]
+[gd_scene load_steps=25 format=3 uid="uid://dlqyuil05a5mb"]
 
 [ext_resource type="Script" path="res://src/Mixer.gd" id="1_ph3tc"]
 [ext_resource type="Texture2D" uid="uid://bgcp0esr0akll" path="res://res/img/mixer.png" id="2_phmpb"]
@@ -205,4 +205,5 @@ one_shot = true
 [connection signal="body_entered" from="MixArea" to="." method="_on_mix_area_body_entered"]
 [connection signal="body_exited" from="MixArea" to="." method="_on_mix_area_body_exited"]
 [connection signal="body_entered" from="Bord" to="." method="_on_bord_body_entered"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

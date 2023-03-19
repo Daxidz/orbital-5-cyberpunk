@@ -7,6 +7,7 @@
 script = ExtResource("1_xm74n")
 
 [node name="ColorRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.780392)
 z_index = 1
 anchors_preset = 10
 anchor_right = 1.0

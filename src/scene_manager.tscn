@@ -1,7 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cc2dmadr060lr"]
+[gd_scene load_steps=10 format=3 uid="uid://cc2dmadr060lr"]
 
 [ext_resource type="Script" path="res://src/scene_manager.gd" id="1_inxua"]
 [ext_resource type="PackedScene" uid="uid://cpgpja6fetd2t" path="res://src/menu.tscn" id="2_fhx1r"]
+[ext_resource type="Texture2D" uid="uid://bnyf6yx7oiyw5" path="res://res/img/ui/gameover.svg" id="3_dy8yw"]
+[ext_resource type="Texture2D" uid="uid://cv0h1swlp5rdf" path="res://res/img/ui/buttons/buttonMenu.svg" id="4_amn1g"]
+[ext_resource type="Texture2D" uid="uid://by507oo451gwm" path="res://res/img/ui/buttonMenuPush.png" id="5_8jeyd"]
+[ext_resource type="Texture2D" uid="uid://cr0r0qdlpfsci" path="res://res/img/ui/buttonMenuHover.svg" id="6_dekn1"]
 
 [sub_resource type="Animation" id="Animation_dbpmi"]
 resource_name = "fade_in"
@@ -78,5 +82,22 @@ color = Color(0, 0, 0, 1)
 libraries = {
 "": SubResource("AnimationLibrary_dntj8")
 }
+
+[node name="DeathScreen" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="DeathScreen"]
+position = Vector2(1, -22)
+scale = Vector2(1.01, 1.01)
+texture = ExtResource("3_dy8yw")
+centered = false
+
+[node name="TextureButton" type="TextureButton" parent="DeathScreen"]
+offset_left = 1525.0
+offset_top = 901.0
+offset_right = 1849.0
+offset_bottom = 1002.0
+texture_normal = ExtResource("4_amn1g")
+texture_pressed = ExtResource("5_8jeyd")
+texture_hover = ExtResource("6_dekn1")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
