@@ -4,7 +4,7 @@ signal recipe_completed
 signal recipe_timed_out
 signal game_over
 
-var lives: int = 1
+var lives: int = 3
 
 @onready var hearts: Array = [
 	$Heart3,

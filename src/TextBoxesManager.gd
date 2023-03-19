@@ -26,7 +26,7 @@ var ROBOTVOICE = [
 	"Robot04.wav",
 	"Robot05.wav"
 ]
-var time_between_spawn: float = 3
+var time_between_spawn: float = 6
 
 func _ready():
 	$Timer.start(time_between_spawn)
