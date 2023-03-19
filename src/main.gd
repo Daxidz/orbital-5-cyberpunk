@@ -52,9 +52,10 @@ func _on_ingredient_spawned():
 	
 	if nb_ingr_total % 10 == 0:
 		$TapisIngredients.speed_current *= 1.2
-		
-	if nb_ingr_total % 25 == 0:
 		_level_increase()
+		
+	#if nb_ingr_total % 10 == 0:
+	#	_level_increase()
 	
 	if nb_ingr_total % 5 == 0:
 		print($TextBoxesManager.time_between_spawn)

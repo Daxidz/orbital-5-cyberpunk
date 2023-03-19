@@ -115,7 +115,14 @@ func _on_animation_player_animation_finished(anim_name):
 
 func _on_Game_over():
 	$AnimationPlayer.play("fade_in")
-
+	$Timer.start(1)
+	AudioServer.set_bus_mute(1, true)
+	AudioServer.set_bus_mute(2, true)
+	AudioServer.set_bus_mute(3, true)
 
 func _on_return_menu_button_pressed():
 	$AnimationPlayer.play("fade_in")
+
+
+func _on_timer_timeout():
+	$Gameover.play()

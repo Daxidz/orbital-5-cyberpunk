@@ -17,18 +17,21 @@ texture = ExtResource("1_6t78y")
 centered = false
 
 [node name="Ingredient1" type="Sprite2D" parent="Background"]
+visible = false
 z_index = 3
 position = Vector2(68, 25)
 scale = Vector2(0.3, 0.215152)
 texture = ExtResource("4_28l5s")
 
 [node name="Ingredient2" type="Sprite2D" parent="Background"]
+visible = false
 z_index = 3
 position = Vector2(160, 25)
 scale = Vector2(0.3, 0.215152)
 texture = ExtResource("4_28l5s")
 
 [node name="Ingredient3" type="Sprite2D" parent="Background"]
+visible = false
 z_index = 3
 position = Vector2(256, 25)
 scale = Vector2(0.3, 0.215152)
