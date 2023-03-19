@@ -19,6 +19,7 @@ func _input(event):
 	if event.is_action_pressed("click"):
 		if state == 1:
 			state = 1
+			$Menu.visible = false
 			$AnimationPlayer.play("fade_in")
 		elif state == 7 or state == 8:
 			state = 10
@@ -53,6 +54,7 @@ func _on_animation_player_animation_finished(anim_name):
 			state = 2
 			print("Launching game")
 #			$Menu.show_tuto(false)
+			$Menu.visible = false
 			$Tuto.visible = false
 			main_scene_tmp = main_scene.instantiate()
 			main_scene_tmp.game_over.connect(_on_Game_over)
@@ -96,7 +98,6 @@ func _on_animation_player_animation_finished(anim_name):
 		
 
 func _on_Game_over():
-	print("META GAME OVER")
 	$AnimationPlayer.play("fade_in")
 
 
