@@ -6,12 +6,12 @@
 [ext_resource type="AudioStream" uid="uid://b4x27q77f3j0d" path="res://res/sounds/coin_06.wav" id="4_jaeg3"]
 [ext_resource type="Script" path="res://src/TapisIngredients.gd" id="5_s7wll"]
 [ext_resource type="Texture2D" uid="uid://4ip7w0yjoc65" path="res://res/img/tapis.png" id="6_bgw1u"]
-[ext_resource type="PackedScene" path="res://src/recipes_manager.tscn" id="7_flfml"]
+[ext_resource type="PackedScene" uid="uid://bsvnmr1cr31y2" path="res://src/recipes_manager.tscn" id="7_flfml"]
 [ext_resource type="Texture2D" uid="uid://qw5y3u0bp6cm" path="res://res/img/TUYAUDEMI.png" id="8_sx4yy"]
 [ext_resource type="Texture2D" uid="uid://li7egooj1puj" path="res://res/img/tuyau.svg" id="8_wht4i"]
 [ext_resource type="Texture2D" uid="uid://52gep52h2nv" path="res://res/img/ui/ecran.svg" id="9_aj3gd"]
 [ext_resource type="PackedScene" uid="uid://5unhdvcfbxs3" path="res://src/recipe_panel.tscn" id="9_rft4q"]
-[ext_resource type="PackedScene" uid="uid://dyownrjtnt80w" path="res://src/text_boxes_manager.tscn" id="10_s6m7u"]
+[ext_resource type="PackedScene" uid="uid://nf8sr3ityc52" path="res://src/text_boxes_manager.tscn" id="10_s6m7u"]
 [ext_resource type="Texture2D" uid="uid://b41p1bdg2gfoy" path="res://res/img/verres/glass4.png" id="12_h4dkd"]
 [ext_resource type="PackedScene" uid="uid://f6m10yeanxsh" path="res://src/score_manager.tscn" id="13_n74ld"]
 
@@ -193,6 +193,7 @@ damping_max = 11.11
 scale_amount_curve = SubResource("Curve_ksps1")
 
 [node name="ScoreManager" parent="." instance=ExtResource("13_n74ld")]
-position = Vector2(1701, 996)
+position = Vector2(1646, 991)
+scale = Vector2(0.6, 0.6)
 
 [connection signal="timeout" from="TapisIngredients/Timer" to="TapisIngredients" method="_on_timer_timeout"]
