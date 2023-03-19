@@ -1,9 +1,11 @@
 class_name RecipesManager extends Node
 
-@export var SPAWN_INTERVAL_MIN: float = 3
-@export var SPAWN_INTERVAL_MAX: float = 6
+@export var SPAWN_INTERVAL_MIN: float = 3		# seconds
+@export var SPAWN_INTERVAL_MAX: float = 6		# seconds
+@export var RECIPE_TIME_EXPIRATION: float = 10	# seconds
+@export var TIMER_INTERVAL: float = 0.5			# seconds
 
-@export var TIMER_INTERVAL: float = 0.5
+var TIMER_TICKS_PER_SEC: float = 1 / TIMER_INTERVAL
 
 var ampoule_texture = preload("res://res/img/ingredients/ampoule.svg")
 var boulon_texture = preload("res://res/img/ingredients/boulon.svg")
@@ -40,6 +42,36 @@ func _ready():
 
 var recipes_panels: Array = []
 
+func _process(_delta):
+	self.redraw_timers()
+
+func redraw_timers():
+	var now = Time.get_ticks_msec()
+	var to_remove = []
+
+	for i in range(self.recipes_panels.size()):
+		var panel = self.recipes_panels[i] as Node2D
+		var timer_bar = panel.get_child(0).get_child(4) as TextureProgressBar
+		
+		var elapsed = (now - self.ongoing_recipes[i].time) / 1000
+		var progress = 100 - (elapsed / RECIPE_TIME_EXPIRATION) * 100
+		timer_bar.set_value_no_signal(progress)
+		if (progress >= 66):
+			timer_bar.tint_progress = Color.GREEN
+		elif (progress <= 33):
+			timer_bar.tint_progress = Color.RED
+		else:
+			timer_bar.tint_progress = Color.ORANGE
+		if (progress >= 0.1):
+			timer_bar.queue_redraw()
+		else:
+			to_remove.push_back(i)
+			
+	for idx in to_remove:
+		self.recipes_panels.remove_at(idx)
+		self.ongoing_recipes.remove_at(idx)
+		self.redraw_recipes()
+
 func redraw_recipes():
 	var main = get_tree().get_root().get_node("Main")
 	var screen = main.get_node("Ecran") as Sprite2D
@@ -61,6 +93,8 @@ func redraw_recipes():
 			var sprite = panel.get_child(0).get_child(j + 1) as Sprite2D
 			sprite.set_texture(TEXTURES[ingredient])
 			sprite.show()
+		var timer_bar = panel.get_child(0).get_child(4) as TextureProgressBar
+		timer_bar.set_value_no_signal(60)
 		panel.position.x = x
 		panel.position.y = y + ((80 + 10) * i)
 		main.add_child(panel)
@@ -68,13 +102,12 @@ func redraw_recipes():
 		i += 1
 
 func generate_next_spawn():
-	self.next_spawn_tick = self.timer_tick + self.rng.randf_range(SPAWN_INTERVAL_MIN, SPAWN_INTERVAL_MAX)
+	self.next_spawn_tick = self.timer_tick + self.rng.randf_range(SPAWN_INTERVAL_MIN * TIMER_TICKS_PER_SEC, SPAWN_INTERVAL_MAX * TIMER_TICKS_PER_SEC)
 
 func spawn_new_recipe():
-	var recipe: Recipe = RECIPES[self.rng.randi_range(0, RECIPES.size() - 1)]
-	self.ongoing_recipes.append(recipe.duplicate())
-
-	print_debug("Added new recipe: %s" % recipe)
+	var recipe: Recipe = RECIPES[self.rng.randi_range(0, RECIPES.size() - 1)].duplicate()
+	recipe.time = Time.get_ticks_msec()
+	self.ongoing_recipes.append(recipe)
 
 	self.redraw_recipes()
 	self.generate_next_spawn()
@@ -104,8 +137,10 @@ func is_ongoing_recipe_valid(ingredients: Array):
 
 class Recipe:
 	var ingredients: Array
+	var time: float
 
-	func _init(ingredients: Array):
+	func _init(ingredients: Array, time: float = Time.get_ticks_msec()):
+		self.time = time
 		self.ingredients.append_array(ingredients)
 		self.ingredients.sort()
 
@@ -118,4 +153,4 @@ class Recipe:
 		return result
 		
 	func duplicate():
-		return Recipe.new(ingredients.duplicate())
+		return Recipe.new(self.ingredients.duplicate(), self.time)

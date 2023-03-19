@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://5unhdvcfbxs3"]
+[gd_scene load_steps=7 format=3 uid="uid://5unhdvcfbxs3"]
 
 [ext_resource type="Texture2D" uid="uid://b2wk70bgifw7o" path="res://icon.svg" id="1_wxxja"]
 [ext_resource type="Texture2D" uid="uid://bgcp0esr0akll" path="res://res/img/mixer.png" id="2_ulxyl"]
 [ext_resource type="Texture2D" uid="uid://c3ljnmxo4m6ux" path="res://res/img/ingredients/ampoule.svg" id="3_8mwrm"]
 [ext_resource type="Texture2D" uid="uid://dh72gdkithqyd" path="res://res/img/ingredients/boulon.svg" id="4_28l5s"]
 [ext_resource type="Texture2D" uid="uid://bwh2rg3puigin" path="res://res/img/ingredients/brocoli.svg" id="5_uddyp"]
+[ext_resource type="Texture2D" uid="uid://4ip7w0yjoc65" path="res://res/img/tapis.png" id="6_qqfdw"]
 
 [node name="RecipePanel" type="Node2D"]
 
@@ -14,24 +15,34 @@ texture = ExtResource("1_wxxja")
 centered = false
 
 [node name="RecipeIcon" type="Sprite2D" parent="Background"]
-position = Vector2(21.7898, 63.5549)
+visible = false
+position = Vector2(18.636, 62.439)
 scale = Vector2(0.157796, 1)
 texture = ExtResource("2_ulxyl")
 
 [node name="Ingredient1" type="Sprite2D" parent="Background"]
 visible = false
-position = Vector2(48.2898, 59.5549)
-scale = Vector2(0.166449, 0.477901)
+position = Vector2(34.9863, 48.7805)
+scale = Vector2(0.167443, 0.366999)
 texture = ExtResource("3_8mwrm")
 
 [node name="Ingredient2" type="Sprite2D" parent="Background"]
 visible = false
-position = Vector2(72.6806, 61.5549)
-scale = Vector2(0.110304, 0.483503)
+position = Vector2(61.9595, 50.3415)
+scale = Vector2(0.118351, 0.34476)
 texture = ExtResource("4_28l5s")
 
 [node name="Ingredient3" type="Sprite2D" parent="Background"]
 visible = false
-position = Vector2(102.7, 61.5549)
-scale = Vector2(0.132239, 0.540201)
+position = Vector2(88.9327, 50.3415)
+scale = Vector2(0.114057, 0.380439)
 texture = ExtResource("5_uddyp")
+
+[node name="TimerBar" type="TextureProgressBar" parent="Background"]
+offset_left = 3.92338
+offset_top = 101.463
+offset_right = 483.923
+offset_bottom = 192.463
+scale = Vector2(0.25, 0.25)
+value = 50.0
+texture_progress = ExtResource("6_qqfdw")
