@@ -24,6 +24,9 @@ func _input(event):
 		elif state == 7 or state == 8:
 			state = 10
 			$AnimationPlayer.play("fade_in")
+		elif state == 11:
+#			state = 1
+			$AnimationPlayer.play("fade_in")
 
 
 
@@ -68,13 +71,23 @@ func _on_animation_player_animation_finished(anim_name):
 			state = 0
 			$AnimationPlayer.play("fade_out")
 			
-		elif state == 0:
-#			$Menu.show_tuto(true)
+		elif state == 11:
+			state = 1
+			$Menu.visible = false
+			$Histoire.visible = false
 			$Tuto.visible = true
+			$AnimationPlayer.play("fade_out")
+			
+		elif state == 12:
+			$Tuto.visible = true
+			$AnimationPlayer.play("fade_out")
+			
+		elif state == 0:
+			$Histoire.visible = true
 			$DeathScreen.visible = false
 			$Credits.visible = false
 			$AnimationPlayer.play("fade_out")
-			state = 1
+			state = 11
 			
 		elif state == 2:
 			main_scene_tmp.queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cc2dmadr060lr"]
+[gd_scene load_steps=13 format=3 uid="uid://cc2dmadr060lr"]
 
 [ext_resource type="Script" path="res://src/scene_manager.gd" id="1_inxua"]
 [ext_resource type="PackedScene" uid="uid://cpgpja6fetd2t" path="res://src/menu.tscn" id="2_fhx1r"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cv0h1swlp5rdf" path="res://res/img/ui/buttons/buttonMenu.svg" id="4_amn1g"]
 [ext_resource type="Texture2D" uid="uid://by507oo451gwm" path="res://res/img/ui/buttonMenuPush.png" id="5_8jeyd"]
 [ext_resource type="Texture2D" uid="uid://cr0r0qdlpfsci" path="res://res/img/ui/buttonMenuHover.svg" id="6_dekn1"]
+[ext_resource type="Texture2D" uid="uid://bbk2ej5u8vn4c" path="res://res/img/ui/histoireintro.png" id="7_pknof"]
 [ext_resource type="Texture2D" uid="uid://dg6knhop0kkjs" path="res://res/img/ui/tuto.png" id="7_u641i"]
 [ext_resource type="Texture2D" uid="uid://r4g7iaprgyx3" path="res://res/img/ui/credits.png" id="8_nvews"]
 
@@ -97,12 +98,20 @@ texture_normal = ExtResource("4_amn1g")
 texture_pressed = ExtResource("5_8jeyd")
 texture_hover = ExtResource("6_dekn1")
 
+[node name="Histoire" type="TextureRect" parent="."]
+visible = false
+offset_left = -4.0
+offset_top = 1.0
+offset_right = 36.0
+offset_bottom = 41.0
+texture = ExtResource("7_pknof")
+
 [node name="Tuto" type="TextureRect" parent="."]
 visible = false
-offset_left = -309.0
-offset_top = -5.0
-offset_right = -309.0
-offset_bottom = -5.0
+offset_left = -322.0
+offset_top = -3.0
+offset_right = 2333.0
+offset_bottom = 1082.0
 mouse_filter = 2
 texture = ExtResource("7_u641i")
 
