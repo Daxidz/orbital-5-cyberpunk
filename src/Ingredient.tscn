@@ -73,6 +73,7 @@ _data = {
 
 [node name="IngrTest" type="RigidBody2D" groups=["ingr"]]
 z_index = 7
+z_as_relative = false
 input_pickable = true
 mass = 0.01
 freeze_mode = 1
