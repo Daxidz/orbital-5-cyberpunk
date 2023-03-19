@@ -8,32 +8,38 @@
 [ext_resource type="Texture2D" uid="uid://4ip7w0yjoc65" path="res://res/img/tapis.png" id="6_qqfdw"]
 
 [node name="RecipePanel" type="Node2D"]
+z_index = 1
 script = ExtResource("1_ukqw3")
 
 [node name="Background" type="Sprite2D" parent="."]
+z_index = 2
 scale = Vector2(1, 1.39437)
 texture = ExtResource("1_6t78y")
 centered = false
 
 [node name="Ingredient1" type="Sprite2D" parent="Background"]
 visible = false
+z_index = 3
 position = Vector2(58, 24.3838)
 scale = Vector2(0.3, 0.215152)
 texture = ExtResource("3_8mwrm")
 
 [node name="Ingredient2" type="Sprite2D" parent="Background"]
 visible = false
+z_index = 3
 position = Vector2(149, 27.2525)
 scale = Vector2(0.3, 0.215152)
 texture = ExtResource("4_28l5s")
 
 [node name="Ingredient3" type="Sprite2D" parent="Background"]
 visible = false
+z_index = 3
 position = Vector2(256, 25.8182)
 scale = Vector2(0.3, 0.215152)
 texture = ExtResource("5_uddyp")
 
 [node name="TimerBar" type="TextureProgressBar" parent="Background"]
+z_index = 3
 texture_filter = 1
 offset_left = 28.0
 offset_top = 53.7879
