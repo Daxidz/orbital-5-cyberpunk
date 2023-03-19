@@ -1,14 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://5unhdvcfbxs3"]
+[gd_scene load_steps=5 format=3 uid="uid://5unhdvcfbxs3"]
 
 [ext_resource type="Texture2D" uid="uid://ejxee1w5bk7o" path="res://res/img/ui/fondRecettes.svg" id="1_6t78y"]
 [ext_resource type="Script" path="res://src/recipe_panel.gd" id="1_ukqw3"]
-[ext_resource type="Texture2D" uid="uid://c3ljnmxo4m6ux" path="res://res/img/ingredients/ampoule.svg" id="3_8mwrm"]
 [ext_resource type="Texture2D" uid="uid://dh72gdkithqyd" path="res://res/img/ingredients/boulon.svg" id="4_28l5s"]
-[ext_resource type="Texture2D" uid="uid://bwh2rg3puigin" path="res://res/img/ingredients/brocoli.svg" id="5_uddyp"]
 [ext_resource type="Texture2D" uid="uid://4ip7w0yjoc65" path="res://res/img/tapis.png" id="6_qqfdw"]
 
 [node name="RecipePanel" type="Node2D"]
-z_index = 1
+z_index = 15
+z_as_relative = false
 script = ExtResource("1_ukqw3")
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -18,25 +17,22 @@ texture = ExtResource("1_6t78y")
 centered = false
 
 [node name="Ingredient1" type="Sprite2D" parent="Background"]
-visible = false
 z_index = 3
-position = Vector2(58, 24.3838)
+position = Vector2(68, 25)
 scale = Vector2(0.3, 0.215152)
-texture = ExtResource("3_8mwrm")
+texture = ExtResource("4_28l5s")
 
 [node name="Ingredient2" type="Sprite2D" parent="Background"]
-visible = false
 z_index = 3
-position = Vector2(149, 27.2525)
+position = Vector2(160, 25)
 scale = Vector2(0.3, 0.215152)
 texture = ExtResource("4_28l5s")
 
 [node name="Ingredient3" type="Sprite2D" parent="Background"]
-visible = false
 z_index = 3
-position = Vector2(256, 25.8182)
+position = Vector2(256, 25)
 scale = Vector2(0.3, 0.215152)
-texture = ExtResource("5_uddyp")
+texture = ExtResource("4_28l5s")
 
 [node name="TimerBar" type="TextureProgressBar" parent="Background"]
 z_index = 3
