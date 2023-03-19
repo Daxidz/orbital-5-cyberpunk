@@ -23,3 +23,4 @@ func _recipe_completed():
 	
 func _recipe_timed_out():
 	self.score -= 1
+	$Error.play()
