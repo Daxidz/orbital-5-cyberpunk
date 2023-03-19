@@ -33,7 +33,6 @@ func _on_play_pressed():
 
 
 func _on_tuto_pressed():
-	
 	$AnimationPlayer.play("fade_in")
 	state = 7
 
@@ -64,6 +63,7 @@ func _on_animation_player_animation_finished(anim_name):
 		elif state == 10:
 			$Tuto.visible = false
 			$DeathScreen.visible = false
+			$Menu.visible = true
 			$Credits.visible = false
 			state = 0
 			$AnimationPlayer.play("fade_out")
@@ -85,6 +85,7 @@ func _on_animation_player_animation_finished(anim_name):
 		elif state == 3:
 			$DeathScreen.visible = false
 			$AnimationPlayer.play("fade_out")
+			$Menu.visible = true
 			state = 10
 			
 		elif state == 7:

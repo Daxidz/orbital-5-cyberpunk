@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://src/scene_manager.gd" id="1_inxua"]
 [ext_resource type="PackedScene" uid="uid://cpgpja6fetd2t" path="res://src/menu.tscn" id="2_fhx1r"]
-[ext_resource type="Texture2D" uid="uid://bnyf6yx7oiyw5" path="res://res/img/ui/gameover.svg" id="3_dy8yw"]
+[ext_resource type="Texture2D" uid="uid://cewo7x4synh7u" path="res://res/img/ui/gameover.png" id="3_msxdo"]
 [ext_resource type="Texture2D" uid="uid://cv0h1swlp5rdf" path="res://res/img/ui/buttons/buttonMenu.svg" id="4_amn1g"]
 [ext_resource type="Texture2D" uid="uid://by507oo451gwm" path="res://res/img/ui/buttonMenuPush.png" id="5_8jeyd"]
 [ext_resource type="Texture2D" uid="uid://cr0r0qdlpfsci" path="res://res/img/ui/buttonMenuHover.svg" id="6_dekn1"]
 [ext_resource type="Texture2D" uid="uid://dg6knhop0kkjs" path="res://res/img/ui/tuto.png" id="7_u641i"]
-[ext_resource type="Texture2D" uid="uid://bg6c4hab1m8l4" path="res://res/img/ui/credits.svg" id="8_5g0dk"]
+[ext_resource type="Texture2D" uid="uid://r4g7iaprgyx3" path="res://res/img/ui/credits.png" id="8_nvews"]
 
 [sub_resource type="Animation" id="Animation_dbpmi"]
 resource_name = "fade_in"
@@ -83,9 +83,9 @@ libraries = {
 visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="DeathScreen"]
-position = Vector2(1, -22)
-scale = Vector2(1.01, 1.01)
-texture = ExtResource("3_dy8yw")
+position = Vector2(-3, -7)
+scale = Vector2(0.47866, 0.473887)
+texture = ExtResource("3_msxdo")
 centered = false
 
 [node name="ReturnMenuButton" type="TextureButton" parent="DeathScreen"]
@@ -109,7 +109,7 @@ texture = ExtResource("7_u641i")
 [node name="Credits" type="TextureRect" parent="."]
 visible = false
 mouse_filter = 2
-texture = ExtResource("8_5g0dk")
+texture = ExtResource("8_nvews")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
