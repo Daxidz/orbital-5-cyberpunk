@@ -16,6 +16,7 @@ func set_texture(texture_name):
 func _ready():
 	freeze = true
 	set_physics_process(true)
+	$AnimationPlayer.play("Float")
 
 func _process(delta):
 	if on_tapis:
@@ -41,6 +42,7 @@ func _on_area_2d_input_event(viewport, event, shape_idx):
 	
 	if event.is_action_pressed("click") and not selected:
 		selected = true
+		$AnimationPlayer.pause()
 		freeze = true
 		on_tapis = false
 		

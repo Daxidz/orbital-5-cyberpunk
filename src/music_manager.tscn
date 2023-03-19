@@ -19,6 +19,7 @@ bus = &"Kick"
 
 [node name="HH" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_jukbr")
+volume_db = -5.0
 autoplay = true
 bus = &"HH"
 
@@ -33,6 +34,7 @@ autoplay = true
 
 [node name="SynthVox" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_i6ldg")
+volume_db = 5.0
 autoplay = true
 bus = &"Synth"
 

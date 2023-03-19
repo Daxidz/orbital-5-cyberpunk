@@ -1,15 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://bfyde53g6pla1"]
+[gd_scene load_steps=17 format=3 uid="uid://bfyde53g6pla1"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_4hrhh"]
 [ext_resource type="Texture2D" uid="uid://dpjeaqibwc7kt" path="res://res/img/background.png" id="2_3o384"]
 [ext_resource type="PackedScene" uid="uid://dlqyuil05a5mb" path="res://src/mixer.tscn" id="3_h1sid"]
 [ext_resource type="Script" path="res://src/TapisIngredients.gd" id="5_s7wll"]
 [ext_resource type="Texture2D" uid="uid://4ip7w0yjoc65" path="res://res/img/tapis.png" id="6_bgw1u"]
-[ext_resource type="PackedScene" uid="uid://bsvnmr1cr31y2" path="res://src/recipes_manager.tscn" id="7_flfml"]
+[ext_resource type="PackedScene" path="res://src/recipes_manager.tscn" id="7_flfml"]
+[ext_resource type="Texture2D" uid="uid://qw5y3u0bp6cm" path="res://res/img/TUYAUDEMI.png" id="8_sx4yy"]
 [ext_resource type="Texture2D" uid="uid://li7egooj1puj" path="res://res/img/tuyau.svg" id="8_wht4i"]
 [ext_resource type="Texture2D" uid="uid://b54ukeo1sasxe" path="res://res/img/ecran.svg" id="9_6wdqx"]
 [ext_resource type="PackedScene" uid="uid://5unhdvcfbxs3" path="res://src/recipe_panel.tscn" id="9_rft4q"]
-[ext_resource type="PackedScene" uid="uid://nf8sr3ityc52" path="res://src/text_boxes_manager.tscn" id="10_s6m7u"]
+[ext_resource type="PackedScene" path="res://src/text_boxes_manager.tscn" id="10_s6m7u"]
 
 [sub_resource type="AudioStream" id="AudioStream_v25gu"]
 
@@ -106,13 +107,13 @@ scale = Vector2(3.99583, 4)
 texture = ExtResource("6_bgw1u")
 
 [node name="SpawnPosUp" type="Marker2D" parent="TapisIngredients"]
-position = Vector2(208, 118)
+position = Vector2(57, 150)
 
 [node name="SpawnPosDown" type="Marker2D" parent="TapisIngredients"]
-position = Vector2(208, 348)
+position = Vector2(57, 337)
 
 [node name="EndPos" type="Marker2D" parent="TapisIngredients"]
-position = Vector2(1714, 259)
+position = Vector2(1870, 240)
 
 [node name="RecipesManager" parent="." instance=ExtResource("7_flfml")]
 
@@ -121,6 +122,13 @@ texture_repeat = 1
 position = Vector2(-64, 300)
 scale = Vector2(1, 1.3)
 texture = ExtResource("8_wht4i")
+
+[node name="Tuyau3" type="Sprite2D" parent="."]
+z_index = 2
+texture_repeat = 1
+position = Vector2(-101, 300.95)
+scale = Vector2(1, 1.25109)
+texture = ExtResource("8_sx4yy")
 
 [node name="Ecran" type="Sprite2D" parent="."]
 position = Vector2(415, 613)
@@ -132,6 +140,14 @@ centered = false
 position = Vector2(1952, 300)
 scale = Vector2(-1, 1.3)
 texture = ExtResource("8_wht4i")
+
+[node name="Tuyau4" type="Sprite2D" parent="."]
+z_index = 2
+texture_repeat = 1
+position = Vector2(1989, 299)
+scale = Vector2(1, 1.25109)
+texture = ExtResource("8_sx4yy")
+flip_h = true
 
 [node name="RecipePanel" parent="." instance=ExtResource("9_rft4q")]
 visible = false
