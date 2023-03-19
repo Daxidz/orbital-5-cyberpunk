@@ -64,3 +64,8 @@ func end_mixing():
 func _on_animated_sprite_2d_animation_finished():
 	if mixing:
 		end_mixing()
+
+
+func _on_texture_button_pressed():
+	mix()
+	pass # Replace with function body.

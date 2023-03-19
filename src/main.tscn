@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bfyde53g6pla1"]
+[gd_scene load_steps=19 format=3 uid="uid://bfyde53g6pla1"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_4hrhh"]
 [ext_resource type="Texture2D" uid="uid://dpjeaqibwc7kt" path="res://res/img/background.png" id="2_3o384"]
@@ -29,6 +29,11 @@ b = Vector2(1918, -7)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_a81mj"]
 a = Vector2(1923, 1)
 b = Vector2(-3, 0)
+
+[sub_resource type="Curve" id="Curve_ksps1"]
+max_value = 10.0
+_data = [Vector2(0.0340136, 10), 0.0, 0.0, 0, 0, Vector2(1, 4.45455), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_4hrhh")
@@ -62,14 +67,6 @@ editable = false
 virtual_keyboard_enabled = false
 middle_mouse_paste_enabled = false
 wrap_mode = 1
-
-[node name="Button" type="Button" parent="."]
-offset_left = 790.0
-offset_top = 895.0
-offset_right = 1077.0
-offset_bottom = 1058.0
-theme_override_font_sizes/font_size = 70
-text = "MIX"
 
 [node name="WorldBoundaries" type="StaticBody2D" parent="."]
 
@@ -175,5 +172,20 @@ scale = Vector2(0.7, 0.7)
 texture = ExtResource("12_h4dkd")
 centered = false
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(1499, 808)
+emitting = false
+amount = 80
+lifetime = 0.8
+one_shot = true
+explosiveness = 0.55
+randomness = 0.41
+lifetime_randomness = 0.26
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 400.0
+initial_velocity_max = 400.0
+damping_max = 11.11
+scale_amount_curve = SubResource("Curve_ksps1")
+
 [connection signal="timeout" from="TapisIngredients/Timer" to="TapisIngredients" method="_on_timer_timeout"]

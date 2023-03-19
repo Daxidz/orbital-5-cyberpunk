@@ -1,0 +1,71 @@
+[gd_scene load_steps=16 format=3 uid="uid://cpgpja6fetd2t"]
+
+[ext_resource type="Texture2D" uid="uid://b1mwi37jchfwm" path="res://res/img/ui/menu.svg" id="1_72a0u"]
+[ext_resource type="Script" path="res://src/menu.gd" id="1_lh8qb"]
+[ext_resource type="Texture2D" uid="uid://bi6lcq37gmd1y" path="res://res/img/ui/buttons/buttonPlay.svg" id="2_bh86d"]
+[ext_resource type="Texture2D" uid="uid://bhvwqoyajyxre" path="res://res/img/ui/buttons/buttonPlayPush.svg" id="3_snu3i"]
+[ext_resource type="Texture2D" uid="uid://cdvrcv5j7d5mf" path="res://res/img/ui/buttons/buttonPlayHover.svg" id="4_cph5v"]
+[ext_resource type="Texture2D" uid="uid://dptsbila3q285" path="res://res/img/ui/buttons/buttonTuto.svg" id="5_8u0tt"]
+[ext_resource type="Texture2D" uid="uid://bcaibtvqqbdl3" path="res://res/img/ui/buttons/buttonTutoPush.svg" id="6_nida7"]
+[ext_resource type="Texture2D" uid="uid://c8pcvnl74yues" path="res://res/img/ui/buttons/buttonTutoHover.svg" id="7_kr6bw"]
+[ext_resource type="Texture2D" uid="uid://dfhhkpkag8jjx" path="res://res/img/ui/buttons/buttonCred.svg" id="8_u0kba"]
+[ext_resource type="Texture2D" uid="uid://dusio2gd43gfn" path="res://res/img/ui/buttons/buttonCredPush.svg" id="9_8gryq"]
+[ext_resource type="Texture2D" uid="uid://bbgdx7tpti7ea" path="res://res/img/ui/buttons/buttonCredHover.svg" id="10_kgtvk"]
+[ext_resource type="Texture2D" uid="uid://o5xd8rqdv8is" path="res://res/img/ui/buttons/buttonQuit.svg" id="11_3c28n"]
+[ext_resource type="Texture2D" uid="uid://cwgb6tx54arhk" path="res://res/img/ui/buttons/buttonQuitPush.svg" id="12_r2vmh"]
+[ext_resource type="Texture2D" uid="uid://coy5qhifunmsq" path="res://res/img/ui/buttons/buttonQuitHover.svg" id="13_6btg3"]
+[ext_resource type="Texture2D" uid="uid://dg6knhop0kkjs" path="res://res/img/ui/tuto.png" id="15_ppmr1"]
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_lh8qb")
+
+[node name="Menu" type="Sprite2D" parent="."]
+texture = ExtResource("1_72a0u")
+centered = false
+
+[node name="Play" type="TextureButton" parent="Menu"]
+offset_left = 1374.0
+offset_top = 859.0
+offset_right = 1698.0
+offset_bottom = 960.0
+texture_normal = ExtResource("2_bh86d")
+texture_pressed = ExtResource("3_snu3i")
+texture_hover = ExtResource("4_cph5v")
+
+[node name="Tuto" type="TextureButton" parent="Menu"]
+offset_left = 288.0
+offset_top = 521.0
+offset_right = 612.0
+offset_bottom = 622.0
+texture_normal = ExtResource("5_8u0tt")
+texture_pressed = ExtResource("6_nida7")
+texture_hover = ExtResource("7_kr6bw")
+
+[node name="Credits" type="TextureButton" parent="Menu"]
+offset_left = 288.0
+offset_top = 663.0
+offset_right = 612.0
+offset_bottom = 764.0
+texture_normal = ExtResource("8_u0kba")
+texture_pressed = ExtResource("9_8gryq")
+texture_hover = ExtResource("10_kgtvk")
+
+[node name="Quit" type="TextureButton" parent="Menu"]
+offset_left = 288.0
+offset_top = 800.0
+offset_right = 612.0
+offset_bottom = 901.0
+texture_normal = ExtResource("11_3c28n")
+texture_pressed = ExtResource("12_r2vmh")
+texture_hover = ExtResource("13_6btg3")
+
+[node name="Tuto" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-310, 0)
+texture = ExtResource("15_ppmr1")
+centered = false
+
+[connection signal="pressed" from="Menu/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Menu/Tuto" to="." method="_on_tuto_pressed"]
+[connection signal="pressed" from="Menu/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Menu/Quit" to="." method="_on_quit_pressed"]

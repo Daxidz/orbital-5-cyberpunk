@@ -73,7 +73,7 @@ func redraw_timers():
 		self.redraw_recipes()
 
 func redraw_recipes():
-	var main = get_tree().get_root().get_node("Main")
+	var main = get_tree().get_root().get_node("SceneManager/Main")
 	var screen = main.get_node("Ecran") as Sprite2D
 	
 	var x = screen.position.x - 290

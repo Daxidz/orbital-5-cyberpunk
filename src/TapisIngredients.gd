@@ -18,7 +18,7 @@ var nb_ingredients_total: int = 0
 @export var ingredients_history_depth: int = 8
 var ingredients_history: Array = []
 
-@onready var recipesManager: RecipesManager = get_tree().get_root().get_node("Main/RecipesManager")
+@onready var recipesManager: RecipesManager = get_tree().get_root().get_node("SceneManager/Main/RecipesManager")
 
 func _ready():
 	spawn_interval = spawn_interval_base
