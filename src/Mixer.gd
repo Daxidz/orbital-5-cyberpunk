@@ -27,6 +27,8 @@ func mix():
 	if not mixing:
 		mixing = true
 		if bodies_in_mixer.size() == 0:
+			
+			mixing = false
 			return
 		for b in bodies_in_mixer:
 			cur_ingredients.push_back(b.ingr_name)

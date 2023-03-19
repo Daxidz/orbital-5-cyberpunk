@@ -90,7 +90,7 @@ func redraw_recipes():
 		var panel = RecipePanelInstancier.instantiate() as Node2D
 		for j in range(recipe.ingredients.size()):
 			var ingredient = recipe.ingredients[j]
-			var sprite = panel.get_child(0).get_child(j + 1) as Sprite2D
+			var sprite = panel.get_child(0).get_child(j) as Sprite2D
 			sprite.set_texture(TEXTURES[ingredient])
 			sprite.show()
 		var timer_bar = panel.get_child(0).get_child(3) as TextureProgressBar
