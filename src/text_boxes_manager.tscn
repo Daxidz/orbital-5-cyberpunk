@@ -12,4 +12,6 @@ script = ExtResource("1_nikbt")
 stream = ExtResource("2_6no1l")
 volume_db = -5.0
 
+[node name="Robot" type="AudioStreamPlayer" parent="."]
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
