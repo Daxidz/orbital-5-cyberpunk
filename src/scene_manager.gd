@@ -102,10 +102,12 @@ func _on_animation_player_animation_finished(anim_name):
 			state = 10
 			
 		elif state == 7:
+			$Menu.visible = false
 			$Tuto.visible = true
 			$AnimationPlayer.play("fade_out")
 			
 		elif state == 8:
+			$Menu.visible = false
 			$Credits.visible = true
 			$AnimationPlayer.play("fade_out")
 			
