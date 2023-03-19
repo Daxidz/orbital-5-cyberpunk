@@ -13,6 +13,10 @@ var brocoli_texture = preload("res://res/img/ingredients/brocoli.svg")
 var essence_texture = preload("res://res/img/ingredients/essence.svg")
 var pile_texture = preload("res://res/img/ingredients/pile.svg")
 
+@export var main: Node2D;
+@export var screen: Node2D;
+@export var score_manager: ScoreManager;
+
 var TEXTURES: Dictionary = {
 	"ampoule": ampoule_texture,
 	"boulon": boulon_texture,
@@ -71,17 +75,15 @@ func redraw_timers():
 		self.recipes_panels.remove_at(idx)
 		self.ongoing_recipes.remove_at(idx)
 		self.redraw_recipes()
+		self.score_manager.emit_signal("recipe_timed_out")
 
 func redraw_recipes():
-	var main = get_tree().get_root().get_node("SceneManager/Main")
-	var screen = main.get_node("Ecran") as Sprite2D
-	
-	var x = screen.position.x - 290
-	var y = screen.position.y + 20
+	var x = self.screen.position.x - 290
+	var y = self.screen.position.y + 20
 	
 	for panel in self.recipes_panels:
 		(panel as Node2D).hide()
-		main.remove_child(panel)
+		self.main.remove_child(panel)
 		panel.queue_free()
 	self.recipes_panels.clear()
 	
@@ -126,6 +128,7 @@ func is_ongoing_recipe_valid(ingredients: Array):
 	
 	var same = self.ongoing_recipes.filter(func(recipe): return recipe.ingredients == ingredients)
 	if (same.size() > 0):
+		self.score_manager.emit_signal("recipe_completed")
 		for recipe in self.ongoing_recipes:
 			if (recipe.ingredients == ingredients):
 				self.ongoing_recipes.erase(recipe)
