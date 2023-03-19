@@ -19,9 +19,7 @@ func _process(_delta):
 		$Label.text = "%d" % score
 
 func _recipe_completed():
-	print_debug("_recipe_completed()")
 	self.score += 1
 	
 func _recipe_timed_out():
-	print_debug("_recipe_timed_out()")
 	self.score -= 1

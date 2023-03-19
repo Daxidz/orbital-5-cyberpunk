@@ -54,8 +54,8 @@ func redraw_timers():
 	var to_remove = []
 
 	for i in range(self.recipes_panels.size()):
-		var panel = self.recipes_panels[i] as Node2D
-		var timer_bar = panel.get_child(0).get_child(3) as TextureProgressBar
+		var panel = self.recipes_panels[i] as RecipePanel
+		var timer_bar = panel.TimerBar
 		
 		var elapsed = (now - self.ongoing_recipes[i].time) / 1000
 		var progress = 100 - (elapsed / RECIPE_TIME_EXPIRATION) * 100
@@ -89,17 +89,16 @@ func redraw_recipes():
 	
 	var i = 0
 	for recipe in ongoing_recipes:
-		var panel = RecipePanelInstancier.instantiate() as Node2D
+		var panel = RecipePanelInstancier.instantiate() as RecipePanel
+		main.add_child(panel)
 		for j in range(recipe.ingredients.size()):
 			var ingredient = recipe.ingredients[j]
-			var sprite = panel.get_child(0).get_child(j) as Sprite2D
+			var sprite = panel.Ingredients[j] as Sprite2D
 			sprite.set_texture(TEXTURES[ingredient])
 			sprite.show()
-		var timer_bar = panel.get_child(0).get_child(3) as TextureProgressBar
-		timer_bar.set_value_no_signal(60)
 		panel.position.x = x-69 # nice
 		panel.position.y = y+10 + ((71 + 40) * i)
-		main.add_child(panel)
+		panel.queue_redraw()
 		self.recipes_panels.push_back(panel)
 		i += 1
 
