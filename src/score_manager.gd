@@ -7,9 +7,9 @@ signal game_over
 var lives: int = 3
 
 @onready var hearts: Array = [
-	$Heart3,
+	$Heart1,
 	$Heart2,
-	$Heart1
+	$Heart3,
 ]
 
 # Called when the node enters the scene tree for the first time.
