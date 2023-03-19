@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bfyde53g6pla1"]
+[gd_scene load_steps=21 format=3 uid="uid://bfyde53g6pla1"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_4hrhh"]
 [ext_resource type="Texture2D" uid="uid://dpjeaqibwc7kt" path="res://res/img/background.png" id="2_3o384"]
@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://b4x27q77f3j0d" path="res://res/sounds/coin_06.wav" id="4_jaeg3"]
 [ext_resource type="Script" path="res://src/TapisIngredients.gd" id="5_s7wll"]
 [ext_resource type="Texture2D" uid="uid://4ip7w0yjoc65" path="res://res/img/tapis.png" id="6_bgw1u"]
-[ext_resource type="PackedScene" uid="uid://bsvnmr1cr31y2" path="res://src/recipes_manager.tscn" id="7_flfml"]
+[ext_resource type="PackedScene" uid="uid://wjsagj87sboh" path="res://src/recipes_manager.tscn" id="7_flfml"]
 [ext_resource type="Texture2D" uid="uid://qw5y3u0bp6cm" path="res://res/img/TUYAUDEMI.png" id="8_sx4yy"]
 [ext_resource type="Texture2D" uid="uid://li7egooj1puj" path="res://res/img/tuyau.svg" id="8_wht4i"]
 [ext_resource type="Texture2D" uid="uid://52gep52h2nv" path="res://res/img/ui/ecran.svg" id="9_aj3gd"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://nf8sr3ityc52" path="res://src/text_boxes_manager.tscn" id="10_s6m7u"]
 [ext_resource type="Texture2D" uid="uid://b41p1bdg2gfoy" path="res://res/img/verres/glass4.png" id="12_h4dkd"]
 [ext_resource type="PackedScene" uid="uid://w21jxvoygl2x" path="res://src/score_manager.tscn" id="13_n74ld"]
+[ext_resource type="AudioStream" uid="uid://bxd4rq566mw3a" path="res://res/sounds/glassbreak_01.wav" id="15_sd2ex"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_jqgvs"]
 a = Vector2(-1, 1085)
@@ -201,7 +202,15 @@ scale_amount_curve = SubResource("Curve_ksps1")
 [node name="ScoreManager" parent="." instance=ExtResource("13_n74ld")]
 z_index = 20
 z_as_relative = false
-position = Vector2(23, 956)
-scale = Vector2(0.8, 0.8)
+position = Vector2(43, 978)
+scale = Vector2(0.6, 0.6)
+
+[node name="GameOver" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_sd2ex")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
 
 [connection signal="timeout" from="TapisIngredients/Timer" to="TapisIngredients" method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

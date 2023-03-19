@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://cc2dmadr060lr"]
+[gd_scene load_steps=14 format=3 uid="uid://cc2dmadr060lr"]
 
 [ext_resource type="Script" path="res://src/scene_manager.gd" id="1_inxua"]
-[ext_resource type="PackedScene" uid="uid://cpgpja6fetd2t" path="res://src/menu.tscn" id="2_fhx1r"]
+[ext_resource type="PackedScene" path="res://src/menu.tscn" id="2_fhx1r"]
 [ext_resource type="Texture2D" uid="uid://cewo7x4synh7u" path="res://res/img/ui/gameover.png" id="3_msxdo"]
 [ext_resource type="Texture2D" uid="uid://cv0h1swlp5rdf" path="res://res/img/ui/buttons/buttonMenu.svg" id="4_amn1g"]
 [ext_resource type="Texture2D" uid="uid://by507oo451gwm" path="res://res/img/ui/buttonMenuPush.png" id="5_8jeyd"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bbk2ej5u8vn4c" path="res://res/img/ui/histoireintro.png" id="7_pknof"]
 [ext_resource type="Texture2D" uid="uid://dg6knhop0kkjs" path="res://res/img/ui/tuto.png" id="7_u641i"]
 [ext_resource type="Texture2D" uid="uid://r4g7iaprgyx3" path="res://res/img/ui/credits.png" id="8_nvews"]
+[ext_resource type="AudioStream" uid="uid://bxd4rq566mw3a" path="res://res/sounds/glassbreak_01.wav" id="10_7fotx"]
 
 [sub_resource type="Animation" id="Animation_dbpmi"]
 resource_name = "fade_in"
@@ -128,5 +129,14 @@ offset_bottom = 1085.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
+[node name="Gameover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_7fotx")
+volume_db = -5.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="DeathScreen/ReturnMenuButton" to="." method="_on_return_menu_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

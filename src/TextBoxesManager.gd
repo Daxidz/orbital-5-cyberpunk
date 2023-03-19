@@ -4,6 +4,11 @@ extends Node2D
 
 
 var TEXTS = [
+	"Bordel! Tu fais quoi?",
+	"Non mais Allo?!",
+	"F%CK",
+	"PUTAIN!!",
+	"What the f@ck?!",
 	"You’re the reason God created the AI ",
 	"I’m not insulting you, I’m describing you.",
 	"I’m not a nerd. I’m just smarter than you.",
@@ -26,7 +31,7 @@ var ROBOTVOICE = [
 	"Robot04.wav",
 	"Robot05.wav"
 ]
-var time_between_spawn: float = 6
+var time_between_spawn: float = 3
 
 func _ready():
 	$Timer.start(time_between_spawn)

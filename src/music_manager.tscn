@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bd76qo12vwiim"]
+[gd_scene load_steps=8 format=3 uid="uid://bd76qo12vwiim"]
 
 [ext_resource type="Script" path="res://src/music_manager.gd" id="1_jc8yq"]
 [ext_resource type="AudioStream" uid="uid://nkvstnaak1uu" path="res://res/sounds/Kick_2.wav" id="2_nrubw"]
@@ -7,7 +7,6 @@
 [ext_resource type="AudioStream" uid="uid://be2owqst6lm73" path="res://res/sounds/Synth_2.wav" id="5_gffhy"]
 [ext_resource type="AudioStream" uid="uid://tqhfrete42ub" path="res://res/sounds/VoxSynth_2.wav" id="6_i6ldg"]
 [ext_resource type="AudioStream" uid="uid://cksknr24fetbn" path="res://res/sounds/Ambience_Place_Market_More_Noise_Loop.wav" id="7_00cvx"]
-[ext_resource type="AudioStream" uid="uid://pbww8cebbmhf" path="res://res/sounds/Ambience_Place_Spaceship_01_Loop.wav" id="8_jfiky"]
 
 [node name="MusicManager" type="Node2D"]
 script = ExtResource("1_jc8yq")
@@ -42,6 +41,3 @@ bus = &"Synth"
 stream = ExtResource("7_00cvx")
 volume_db = -5.0
 autoplay = true
-
-[node name="Noise" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_jfiky")
