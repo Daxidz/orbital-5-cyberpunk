@@ -70,6 +70,7 @@ func redraw_timers():
 			to_remove.push_back(i)
 			
 	for idx in to_remove:
+		self.recipes_panels[idx].hide()
 		self.recipes_panels.remove_at(idx)
 		self.ongoing_recipes.remove_at(idx)
 		self.redraw_recipes()

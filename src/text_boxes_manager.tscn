@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyownrjtnt80w"]
+[gd_scene load_steps=3 format=3 uid="uid://nf8sr3ityc52"]
 
 [ext_resource type="Script" path="res://src/TextBoxesManager.gd" id="1_nikbt"]
 [ext_resource type="AudioStream" uid="uid://bqgwddjq6muyi" path="res://res/sounds/scoretick_01.wav" id="2_6no1l"]
 
 [node name="TextBoxesManager" type="Node2D"]
+z_index = 19
+z_as_relative = false
 script = ExtResource("1_nikbt")
 
 [node name="Timer" type="Timer" parent="."]
